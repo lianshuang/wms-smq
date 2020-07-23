@@ -2,6 +2,9 @@
 	import pageAnimation from './components/page-animation'
 	export default {
 		mixins: [pageAnimation],
+		globalData: {
+			text: '公共存储'
+		},
 		onLaunch: function() {
 			console.log('App Launch');
 		},

@@ -18,7 +18,9 @@
 		"navigationBarBackgroundColor": "#007AFF",
 		"backgroundColor": "#FFFFFF",
 		"app-plus": {
-			"titleNView": false // 去掉APP、H5的顶部导航
+			"titleNView": false, // 去掉APP、H5的顶部导航
+			"animationType": "fade-in",
+			"animationDuration": 300
 		}
 	}
 }

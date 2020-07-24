@@ -29,9 +29,7 @@
 				console.log(e);
 				uni.setStorageSync('Token', 'dfsa6d5ad4fdffs6d5fa6ds');
 				uni.navigateTo({
-					url: '../login/index?id=1&name=uniapp',
-					animationType: 'pop-in',
-					animationDuration: 2000
+					url: '../login/index?id=1&name=uniapp'
 				});
 				// setTimeout(()=>{
 				// 	console.log(uni.getStorageSync('Token'));

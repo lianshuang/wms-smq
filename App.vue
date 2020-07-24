@@ -3,7 +3,8 @@
 	export default {
 		mixins: [pageAnimation],
 		globalData: {
-			text: '公共存储'
+			token: '',
+			userInfo: {}
 		},
 		onLaunch: function() {
 			console.log('App Launch');
@@ -26,4 +27,6 @@
 	}
 
 	/* #endif */
+	
+	@import "/static/font/iconfont.css";
 </style>

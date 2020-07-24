@@ -1,0 +1,86 @@
+{
+  "id": "1122441",
+  "name": "Scanner",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "2150401",
+      "name": "退出",
+      "font_class": "tuichu",
+      "unicode": "e7c8",
+      "unicode_decimal": 59336
+    },
+    {
+      "icon_id": "424221",
+      "name": "发货",
+      "font_class": "fahuo",
+      "unicode": "e6d5",
+      "unicode_decimal": 59093
+    },
+    {
+      "icon_id": "584811",
+      "name": "卸载",
+      "font_class": "xiezai",
+      "unicode": "e62c",
+      "unicode_decimal": 58924
+    },
+    {
+      "icon_id": "1134337",
+      "name": "收货",
+      "font_class": "shouhuo",
+      "unicode": "e684",
+      "unicode_decimal": 59012
+    },
+    {
+      "icon_id": "1236928",
+      "name": "上架",
+      "font_class": "iconfontzhizuobiaozhunbduan31",
+      "unicode": "e6e5",
+      "unicode_decimal": 59109
+    },
+    {
+      "icon_id": "1447255",
+      "name": "打包下载",
+      "font_class": "dabaoxiazai",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "3239740",
+      "name": "移库",
+      "font_class": "yiku",
+      "unicode": "e609",
+      "unicode_decimal": 58889
+    },
+    {
+      "icon_id": "3703010",
+      "name": "库存盘点单",
+      "font_class": "navicon-kcpdd",
+      "unicode": "e65f",
+      "unicode_decimal": 58975
+    },
+    {
+      "icon_id": "4583862",
+      "name": "拣货归还",
+      "font_class": "jianhuoguihuan",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "7017733",
+      "name": "查询",
+      "font_class": "chaxun",
+      "unicode": "e625",
+      "unicode_decimal": 58917
+    },
+    {
+      "icon_id": "1687284",
+      "name": "设置",
+      "font_class": "ziyuan",
+      "unicode": "e63a",
+      "unicode_decimal": 58938
+    }
+  ]
+}

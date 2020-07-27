@@ -8,6 +8,17 @@
 		},
 		onLaunch: function() {
 			console.log('App Launch');
+			// 设置信息
+			if (!getApp().globalData.token && !uni.getStorageSync('token')) {
+				uni.navigateTo({
+					url: './pages/login/index'
+				});
+			} else if (!getApp().globalData.token && uni.getStorageSync('token')) {
+				getApp().globalData.token = uni.getStorageSync('token')
+				getApp().globalData.username = uni.getStorageSync('username')
+				getApp().globalData.userInfo = JSON.parse(uni.getStorageSync('userInfo'))
+			}
+
 		},
 		onShow: function() {
 			console.log('App Show');
@@ -27,6 +38,6 @@
 	}
 
 	/* #endif */
-	
+
 	@import "/static/font/iconfont.css";
 </style>

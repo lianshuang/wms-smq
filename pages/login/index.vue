@@ -20,24 +20,21 @@
 	import {
 		login,
 		getInfo
-	} from '../../commom/api.js'
+	} from '../../commom/js/api.js'
 	export default {
 		data() {
 			return {
 				username: '',
 				password: '',
-				submiting: false
+				submiting: false,
+				firstEnter: true
 			}
 		},
 		onShow() {
 			this.checkLogin()
 		},
 		onLoad: function(option) { //option为object类型，会序列化上个页面传递的参数
-			// console.log(option.id); //打印出上个页面传递的参数。
-			// console.log(option.name); //打印出上个页面传递的参数。
-			console.log('on load------------');
 			this.checkLogin()
-			console.log('load');
 			
 		},
 		created() {
@@ -93,11 +90,10 @@
 			// 获取个人信息
 			getInfo() {
 				getInfo({}).then(res => {
-					console.log('获取信息');
-					console.log(res);
 					if(res.id){
 						// 跳转首页
 						getApp().globalData.userInfo = res
+						uni.setStorageSync('userInfo', JSON.stringify(res));
 						uni.navigateTo({
 							url: '../index/index'
 						});

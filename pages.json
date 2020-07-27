@@ -10,6 +10,25 @@
 			"style": {
 				"navigationBarTitleText": "首页"
 			}
+		},
+		// 卸货
+		{
+			"path": "pages/discharge/index",
+			"style": {
+				"navigationBarTitleText": "卸货"
+			}
+		},
+		{
+			"path": "pages/discharge/discharge1",
+			"style": {
+				"navigationBarTitleText": "扫描入库单号"
+			}
+		},
+		{
+			"path": "pages/discharge/discharge2",
+			"style": {
+				"navigationBarTitleText": "输入箱数"
+			}
 		}
 	],
 	"globalStyle": {

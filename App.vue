@@ -30,15 +30,63 @@
 	};
 </script>
 
-<style>
-	/* 解决头条小程序组件内引入字体不生效的问题 */
-	/* #ifdef MP-TOUTIAO */
-	@font-face {
-		font-family: uniicons;
-		src: url('/static/uni.ttf');
+<style lang="scss">
+	/deep/ .uni-navbar__header {
+		color: #fff !important;
+		background-color: #484370 !important;
 	}
 
-	/* #endif */
+	/deep/ .uni-nav-bar-text {
+		color: #fff !important;
+	}
 
-	@import "/static/font/iconfont.css";
+	.operation {
+		padding: 10rpx 30rpx 45px 30rpx;
+		// background-color: #C2ADAF;
+		box-sizing: border-box;
+		min-height: calc(100vh - 45px);
+
+		.scanner {
+			.scanner-label {
+				font-size: 36rpx;
+				font-weight: bold;
+			}
+
+			.scanner-input {
+				border: 1rpx solid #ccc;
+				padding: 15rpx 20rpx;
+				margin-top: 14rpx;
+			}
+		}
+
+		.bottom-btn {
+			width: 100vw;
+			height: 45px;
+			position: fixed;
+			left: 0;
+			bottom: 0;
+			display: flex;
+
+			.left {
+				width: 50%;
+				border-radius: 0px;
+				border-right: 1px solid rgba(255, 255, 255, .2);
+				background-color: #484370;
+
+				&::after {
+					border: none;
+				}
+			}
+
+			.right {
+				width: 50%;
+				border-radius: 0px;
+				background-color: #484370;
+
+				&::after {
+					border: none;
+				}
+			}
+		}
+	}
 </style>

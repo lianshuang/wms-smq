@@ -101,11 +101,6 @@
               uni.report('title', this.title)
           }
         },
-		computed:{
-			$username() {
-				return getApp().globalData.userInfo.username
-			}
-		},
 		methods: {
 			onClickLeft() {
 				this.$emit("clickLeft");

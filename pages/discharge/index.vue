@@ -3,23 +3,33 @@
 </template>
 
 <script>
+	import {
+		getStep
+	} from '../../commom/js/api.js'
 	export default {
 		data() {
 			return {}
 		},
+		onLoad: function(option) { //option为object类型，会序列化上个页面传递的参数
+			this.getStep(option.type)
+			
+			
+		},
 		created() {
-			uni.showLoading({
-				title: '加载中'
-			});
-			setTimeout(() => {
-				uni.hideLoading();
-				const step = 1
-				const url = this.getStepRouter(step)
-
-			}, 2000);
 		},
 		methods: {
-
+			getStep(type){
+				uni.showLoading({
+					title: '加载中'
+				});
+				getStep({type}).then(res=>{
+					console.log(res);
+					if(res.code===200){
+						this.getStepRouter(res.step)
+					}
+					uni.hideLoading();
+				}).catch(err=>{uni.hideLoading();})
+			}
 		}
 	}
 </script>

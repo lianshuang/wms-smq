@@ -3,15 +3,18 @@
 		<uni-nav-bar :shadow='false' title="首页" @clickRight="logOut()">
 			<view slot="right">
 				<text>{{$username}}</text>
-				<i class="iconfont icontuichu logout"/>
+				<i class="iconfont icontuichu logout" />
 			</view>
 		</uni-nav-bar>
-		<uni-grid @change="navigatorTo($event)" :column="3" :show-border="true" :square="true">
-			<uni-grid-item v-for="(item,index) in grid_array" :index='index' :key="item.icon" class="grid-item">
-				<i :class="['grid-icon','iconfont', item.icon]" :style="{color:item.color}"/>
-				<text>{{item.text}}</text>
-			</uni-grid-item>
-		</uni-grid>
+		<view class="grid-box">
+			<uni-grid @change="navigatorTo($event)" :column="3" :show-border="true" :square="true">
+				<uni-grid-item v-for="(item,index) in grid_array" :index='index' :key="item.icon" class="grid-item">
+					<i :class="['grid-icon','iconfont', item.icon]" :style="{color:item.color}" />
+					<text>{{item.text}}</text>
+				</uni-grid-item>
+			</uni-grid>
+		</view>
+
 	</view>
 </template>
 
@@ -74,9 +77,8 @@
 		methods: {
 			// 跳转
 			navigatorTo(e) {
-				console.log(e);
-				console.log(this.grid_array[e.detail.index]['path']);
-				const url = `../${this.grid_array[e.detail.index]['path']}/index`
+				const type = this.grid_array[e.detail.index]['path']
+				const url = `../${this.grid_array[e.detail.index]['path']}/index?type=${type}`
 				uni.navigateTo({
 					url
 				});
@@ -84,11 +86,11 @@
 			// 退出登录
 			logOut() {
 				uni.showModal({
-				    title: '提示',
-				    content: '退出登录',
-				    success: function (res) {
-				        if (res.confirm) {
-				            console.log('用户点击确定');
+					title: '提示',
+					content: '退出登录',
+					success: function(res) {
+						if (res.confirm) {
+							console.log('用户点击确定');
 							getApp().globalData.token = ''
 							getApp().globalData.userInfo = {}
 							uni.removeStorageSync('token');
@@ -96,8 +98,8 @@
 							uni.navigateTo({
 								url: '../login/index'
 							});
-				        }
-				    }
+						}
+					}
 				});
 			}
 		}
@@ -106,23 +108,28 @@
 
 <style lang="scss">
 	.container {
-		padding: $Gpadding;
 		font-size: 14px;
 		line-height: 24px;
-		
+
 		.logout {
 			color: red;
 			font-weight: bold;
 			margin-left: 10rpx;
 		}
 
-		.grid-item {
-			text-align: center;
+		.grid-box {
+			padding: $Gpadding;
 
-			.grid-icon {
-				margin: auto auto;
-				font-size: 80rpx;
+			.grid-item {
+				text-align: center;
+
+				.grid-icon {
+					margin: auto auto;
+					font-size: 80rpx;
+				}
 			}
 		}
+
+
 	}
 </style>

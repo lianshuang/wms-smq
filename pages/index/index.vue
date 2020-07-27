@@ -2,14 +2,13 @@
 	<view class="container">
 		<uni-nav-bar :shadow='false' title="首页" @clickRight="logOut()">
 			<view slot="right">
-				<text>{{username}}</text>
-				<icon type="close" color="red" size="20"/>
+				<text>{{$username}}</text>
 				<i class="iconfont icontuichu logout"/>
 			</view>
 		</uni-nav-bar>
 		<uni-grid @change="navigatorTo($event)" :column="3" :show-border="true" :square="true">
 			<uni-grid-item v-for="(item,index) in grid_array" :index='index' :key="item.icon" class="grid-item">
-				<icon :type="item.icon" size="80rpx" class="grid-icon" />
+				<i :class="['grid-icon','iconfont', item.icon]" :style="{color:item.color}"/>
 				<text>{{item.text}}</text>
 			</uni-grid-item>
 		</uni-grid>
@@ -29,41 +28,46 @@
 		data() {
 			return {
 				grid_array: [{
-						icon: 'success',
+						icon: 'iconxiezai',
 						text: '卸货',
-						path: 'discharge'
+						path: 'discharge',
+						color: '#87ceeb'
 					},
 					{
-						icon: 'success_no_circle',
+						icon: 'iconshouhuo',
 						text: '收货',
-						path: 'receipt'
+						path: 'receipt',
+						color: '#ad2c56'
 					},
 					{
-						icon: 'info',
+						icon: 'iconiconfontzhizuobiaozhunbduan31',
 						text: '上架',
-						path: 'shelf'
+						path: 'shelf',
+						color: '#0fd454'
 					},
 					{
-						icon: 'warn',
+						icon: 'iconjianhuoguihuan',
 						text: '拣选',
-						path: 'pick'
+						path: 'pick',
+						color: '#e087eb'
 					},
 					{
-						icon: 'waiting',
+						icon: 'icondabaoxiazai',
 						text: '打包',
-						path: 'bale'
+						path: 'bale',
+						color: '#1f43c5'
 					},
 					{
-						icon: 'cancel',
+						icon: 'iconfahuo',
 						text: '发货',
-						path: 'ship'
+						path: 'ship',
+						color: '#f90909'
 					}
 				]
 			}
 		},
 		computed: {
 			username() {
-				console.log(getApp().globalData.userInfo);
 				return getApp().globalData.userInfo.username
 			}
 		},
@@ -117,6 +121,7 @@
 
 			.grid-icon {
 				margin: auto auto;
+				font-size: 80rpx;
 			}
 		}
 	}

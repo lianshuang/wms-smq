@@ -1,6 +1,11 @@
 <template>
 	<view class="step">
-		步骤1
+		<uni-nav-bar :shadow='false' title="卸货">
+			<view slot="right">
+				<text>{{$username}}</text>
+				<!-- <i class="iconfont icontuichu logout"/> -->
+			</view>
+		</uni-nav-bar>
 	</view>
 </template>
 
@@ -8,6 +13,9 @@
 	export default{
 		data(){
 			return {}
+		},
+		created(){
+			console.log(getCurrentPages()[0]);
 		}
 	}
 </script>

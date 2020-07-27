@@ -17,6 +17,7 @@
 				getApp().globalData.token = uni.getStorageSync('token')
 				getApp().globalData.username = uni.getStorageSync('username')
 				getApp().globalData.userInfo = JSON.parse(uni.getStorageSync('userInfo'))
+				this.$setUsername(JSON.parse(uni.getStorageSync('userInfo')).username)
 			}
 
 		},

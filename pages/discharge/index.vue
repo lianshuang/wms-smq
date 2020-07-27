@@ -5,8 +5,7 @@
 <script>
 	export default {
 		data() {
-			return {
-			}
+			return {}
 		},
 		created() {
 			uni.showLoading({
@@ -16,7 +15,7 @@
 				uni.hideLoading();
 				const step = 1
 				const url = this.getStepRouter(step)
-				
+
 			}, 2000);
 		},
 		methods: {

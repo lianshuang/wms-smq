@@ -94,6 +94,7 @@
 						// 跳转首页
 						getApp().globalData.userInfo = res
 						uni.setStorageSync('userInfo', JSON.stringify(res));
+						this.$setUsername(res.username)
 						uni.navigateTo({
 							url: '../index/index'
 						});

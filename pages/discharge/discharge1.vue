@@ -10,11 +10,11 @@
 		<view class="operation">
 			<view class="scanner">
 				<text class="scanner-label">扫描入库单号：</text>
-				<input class="scanner-input" type="text" placeholder="请扫描入库单号" @confirm="enterConfirm()" v-model="formData.order_num" />
+				<input class="scanner-input" type="text" placeholder="请扫描入库单号" @confirm="nextStep()" v-model="formData.order_num" />
 			</view>
 			<!-- 底栏操作按钮 -->
 			<view class="bottom-btn">
-				<button class="left" type="primary" @click="back()" :loading="false">返回</button>
+				<button class="left" type="primary" @click="back()" :loading="false">完成</button>
 				<button class="right" type="primary" @click="nextStep()" :loading="false">下一步</button>
 			</view>
 		</view>
@@ -32,22 +32,38 @@
 				formData: {
 					order_num: ''
 				},
+				option: {},
 				loading: false
 			}
 		},
 		computed: {
-			getRoutePath() {
-				const path = getCurrentPages()[getCurrentPages().length - 1]['$route']['path']
-				const step = Number(path.slice(-1))
-				const lastPath = step - 1 === 0 ?
-					'../index/index' : './' + path.split('/')[3].slice(0, -1) + (step - 1 - 1)
-				const nextPath = './' + path.split('/')[3].slice(0, -1) + (step + 1)
-				return {
-					path,
-					lastPath,
-					nextPath
+			// 获取页面路由信息
+			// getRoutePath() {
+			// 	const path = getCurrentPages()[getCurrentPages().length - 1]['$route']['path']
+			// 	const step = Number(path.slice(-1))
+			// 	const basicPath = './' + path.split('/')[3].slice(0, -1)
+			// 	const lastPath = step - 1 === 0 ?
+			// 		'../index/index' : './' + basicPath + (step - 1 - 1)
+			// 	const nextPath = './' + path.split('/')[3].slice(0, -1) + (step + 1)
+			// 	return {
+			// 		step,
+			// 		path,
+			// 		lastPath,
+			// 		nextPath,
+			// 		basicPath
+			// 	}
+			// },
+			// 获取当前步骤需要提交的表单信息
+			requestData() {
+				return { ...this.formData,
+					...getApp().globalData.request,
+					step: this.getRoutePath().step,
 				}
 			}
+		},
+		onLoad: function(option) {
+			console.log(option);
+			this.option = option
 		},
 		methods: {
 			// 校验
@@ -68,7 +84,7 @@
 			},
 			// 返回
 			back() {
-				uni.navigateTo({
+				uni.redirectTo({
 					url: this.getRoutePath.lastPath
 				})
 			},
@@ -84,9 +100,21 @@
 				uni.hideLoading();
 				this.loading = false
 				if (!flag) return
-				console.log('通过');
-				nextStep().then(res => {
+				nextStep(this.requestData).then(res => {
 					console.log(res);
+					if (res.code === 200) {
+						uni.navigateTo({
+							url: this.getRoutePath().basicPath + res.data.step + this.setUrlParams(this.requestData)
+						})
+					} else {
+						uni.showToast({
+							title: res.detail || res.message || 'fail request! please check!',
+							mask: true,
+							duration: 2000,
+							icon: 'none',
+							position: 'top'
+						});
+					}
 				})
 			},
 		}

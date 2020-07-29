@@ -4,10 +4,17 @@
 		mixins: [pageAnimation],
 		globalData: {
 			token: '',
-			userInfo: {}
+			userInfo: {},
+			request: {}
 		},
 		onLaunch: function() {
 			console.log('App Launch');
+
+			uni.showLoading({
+				title: '加载中',
+				mask: true
+			});
+
 			// 设置信息
 			if (!getApp().globalData.token && !uni.getStorageSync('token')) {
 				uni.navigateTo({
@@ -20,6 +27,23 @@
 				this.$setUsername(JSON.parse(uni.getStorageSync('userInfo')).username)
 			}
 
+			// 设置全局type
+			setTimeout(() => {
+				const path = getCurrentPages()[getCurrentPages().length - 1]['$route']['path']
+				const type = path.split('/')[2]
+				getApp().globalData.request.type = type
+				const page = path.slice(-1)
+				if (!isNaN(Number(page))) {
+					// 在操作得步骤页刷新得话跳回首页
+					const url = `/pages/${type}/index?type=${type}`
+					uni.hideLoading();
+					uni.navigateTo({
+						url
+					});
+				}
+				uni.hideLoading();
+			}, 1000)
+
 		},
 		onShow: function() {
 			console.log('App Show');
@@ -31,6 +55,10 @@
 </script>
 
 <style lang="scss">
+	/deep/ .uni-mask {
+		background: rgba(0, 0, 0, .5) !important;
+	}
+
 	/deep/ .uni-navbar__header {
 		color: #fff !important;
 		background-color: #484370 !important;
@@ -40,12 +68,45 @@
 		color: #fff !important;
 	}
 
+
+	// 操作栏
 	.operation {
 		padding: 10rpx 30rpx 45px 30rpx;
-		// background-color: #C2ADAF;
 		box-sizing: border-box;
 		min-height: calc(100vh - 45px);
 
+		.top-info {
+			font-size: 30rpx;
+			font-weight: bold;
+		}
+
+		// 底部显示信息
+		.bottom-info {
+			font-size: 30rpx;
+			margin-top: 30rpx;
+
+			.list-table {
+				table {
+					width: 100%;
+
+					tr {
+						display: flex;
+						justify-content: space-evenly;
+						flex-wrap: nowrap;
+
+						td {
+							// width: ;
+							flex-grow: 1;
+						}
+					}
+				}
+			}
+
+
+
+		}
+
+		// 扫描输入框
 		.scanner {
 			.scanner-label {
 				font-size: 36rpx;
@@ -59,6 +120,7 @@
 			}
 		}
 
+		// 底部表格
 		.bottom-btn {
 			width: 100vw;
 			height: 45px;

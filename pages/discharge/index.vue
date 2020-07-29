@@ -12,20 +12,19 @@
 		},
 		onLoad: function(option) { //option为object类型，会序列化上个页面传递的参数
 			this.getStep(option.type)
-			
-			
 		},
 		created() {
 		},
 		methods: {
 			getStep(type){
 				uni.showLoading({
-					title: '加载中'
+					title: '加载中',
+					mask: true
 				});
 				getStep({type}).then(res=>{
 					console.log(res);
 					if(res.code===200){
-						this.getStepRouter(res.step)
+						this.getStepRouter(res.data.step)
 					}
 					uni.hideLoading();
 				}).catch(err=>{uni.hideLoading();})

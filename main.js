@@ -69,7 +69,11 @@ Vue.prototype.setUrlParams = function(params = {}) {
 Vue.prototype.filterRequest = function(request = {}) {
 	const tem = {}
 	Object.keys(request).forEach(i => {
-		!Array.isArray(request[i]) ? tem[i] = request[i] : ''
+		// !Array.isArray(request[i]) ? tem[i] = request[i] : '',
+		// 数组类型不带
+		if(!Array.isArray(request[i]) && !i.startsWith('$')){
+			tem[i] = request[i]
+		}
 	})
 	return tem
 }

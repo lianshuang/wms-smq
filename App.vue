@@ -64,7 +64,7 @@
 		background-color: #484370 !important;
 
 		.icon-left {
-			font-size: 44rpx;
+			font-size: 40rpx;
 		}
 	}
 
@@ -113,6 +113,10 @@
 
 		// 扫描输入框
 		.scanner {
+			.scanner-title {
+				font-size: 36rpx;
+				font-weight: 600;
+			}
 			.scanner-label {
 				font-size: 36rpx;
 				font-weight: bold;

@@ -83,9 +83,8 @@
 				const type = this.grid_array[e.detail.index]['path']
 				const url = `../${this.grid_array[e.detail.index]['path']}/index?type=${type}`
 				console.log(type);
-				console.log('觉得好看');
-				console.log(url);
 				getApp().globalData.request.type = type
+				console.log(url);
 				uni.navigateTo({
 					url
 				});

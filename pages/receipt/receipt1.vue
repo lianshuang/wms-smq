@@ -2,7 +2,7 @@
 	<view>
 		<!-- 顶部栏 -->
 		<view class="step">
-			<uni-nav-bar :shadow='false' title="卸货" @clickLeft="backToIndex()">
+			<uni-nav-bar :shadow='false' title="收货" @clickLeft="backToIndex()">
 				<view slot="left">
 					<i class="iconfont iconfanhui1 icon-left"/>
 				</view>
@@ -40,22 +40,6 @@
 			}
 		},
 		computed: {
-			// 获取页面路由信息
-			// getRoutePath() {
-			// 	const path = getCurrentPages()[getCurrentPages().length - 1]['$route']['path']
-			// 	const step = Number(path.slice(-1))
-			// 	const basicPath = './' + path.split('/')[3].slice(0, -1)
-			// 	const lastPath = step - 1 === 0 ?
-			// 		'../index/index' : './' + basicPath + (step - 1 - 1)
-			// 	const nextPath = './' + path.split('/')[3].slice(0, -1) + (step + 1)
-			// 	return {
-			// 		step,
-			// 		path,
-			// 		lastPath,
-			// 		nextPath,
-			// 		basicPath
-			// 	}
-			// },
 			// 获取当前步骤需要提交的表单信息
 			requestData() {
 				return {
@@ -70,11 +54,6 @@
 			this.option = option
 		},
 		methods: {
-			// backToIndex(){
-			// 	uni.redirectTo({
-			// 		url: '../index/index'
-			// 	});
-			// },
 			// 校验
 			validateForm() {
 				return new Promise((resolve, reject) => {

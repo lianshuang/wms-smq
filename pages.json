@@ -29,6 +29,31 @@
 			"style": {
 				"navigationBarTitleText": "输入箱数"
 			}
+		},
+		// 收货
+		{
+			"path": "pages/receipt/index",
+			"style": {
+				"navigationBarTitleText": "收货"
+			}
+		},
+		{
+			"path": "pages/receipt/receipt1",
+			"style": {
+				"navigationBarTitleText": "扫描入库单号"
+			}
+		},
+		{
+			"path": "pages/receipt/receipt2",
+			"style": {
+				"navigationBarTitleText": "扫描SKU"
+			}
+		},
+		{
+			"path": "pages/receipt/receipt3",
+			"style": {
+				"navigationBarTitleText": "输入SKU包装信息"
+			}
 		}
 	],
 	"globalStyle": {

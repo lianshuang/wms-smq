@@ -62,6 +62,10 @@
 	/deep/ .uni-navbar__header {
 		color: #fff !important;
 		background-color: #484370 !important;
+
+		.icon-left {
+			font-size: 44rpx;
+		}
 	}
 
 	/deep/ .uni-nav-bar-text {
@@ -97,6 +101,7 @@
 						td {
 							// width: ;
 							flex-grow: 1;
+							flex: 1;
 						}
 					}
 				}

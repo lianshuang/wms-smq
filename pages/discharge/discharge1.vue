@@ -2,7 +2,10 @@
 	<view>
 		<!-- 顶部栏 -->
 		<view class="step">
-			<uni-nav-bar :shadow='false' title="卸货">
+			<uni-nav-bar :shadow='false' title="卸货" @clickLeft="backToIndex()">
+				<view slot="left">
+					<i class="iconfont iconfanhui1 icon-left"/>
+				</view>
 				<view slot="right"> <text>{{$username}}</text> </view>
 			</uni-nav-bar>
 		</view>
@@ -10,7 +13,7 @@
 		<view class="operation">
 			<view class="scanner">
 				<text class="scanner-label">扫描入库单号：</text>
-				<input class="scanner-input" type="text" placeholder="请扫描入库单号" @confirm="nextStep()" v-model="formData.order_num" />
+				<input class="scanner-input" type="text" placeholder="请扫描入库单号" @confirm="nextStep()" v-model="formData.master_order_num" />
 			</view>
 			<!-- 底栏操作按钮 -->
 			<view class="bottom-btn">
@@ -30,7 +33,7 @@
 		data() {
 			return {
 				formData: {
-					order_num: ''
+					master_order_num: ''
 				},
 				option: {},
 				loading: false
@@ -55,9 +58,10 @@
 			// },
 			// 获取当前步骤需要提交的表单信息
 			requestData() {
-				return { ...this.formData,
+				return {
 					...getApp().globalData.request,
 					step: this.getRoutePath().step,
+					...this.formData,
 				}
 			}
 		},
@@ -66,10 +70,15 @@
 			this.option = option
 		},
 		methods: {
+			// backToIndex(){
+			// 	uni.redirectTo({
+			// 		url: '../index/index'
+			// 	});
+			// },
 			// 校验
 			validateForm() {
 				return new Promise((resolve, reject) => {
-					if (!this.formData.order_num) {
+					if (!this.formData.master_order_num) {
 						uni.showToast({
 							title: '请扫描入库单号',
 							icon: 'none',
@@ -85,7 +94,7 @@
 			// 返回
 			back() {
 				uni.redirectTo({
-					url: this.getRoutePath.lastPath
+					url: this.getRoutePath().lastPath
 				})
 			},
 			// 下一步
@@ -100,11 +109,14 @@
 				uni.hideLoading();
 				this.loading = false
 				if (!flag) return
-				nextStep(this.requestData).then(res => {
+				nextStep(this.filterRequest(this.requestData)).then(res => {
 					console.log(res);
 					if (res.code === 200) {
+						getApp().globalData.request = { ...getApp().globalData.request,
+							...res.data
+						}
 						uni.navigateTo({
-							url: this.getRoutePath().basicPath + res.data.step + this.setUrlParams(this.requestData)
+							url: this.getRoutePath().basicPath + res.data.step
 						})
 					} else {
 						uni.showToast({

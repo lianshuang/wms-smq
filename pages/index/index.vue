@@ -69,6 +69,9 @@
 				]
 			}
 		},
+		onShow() {
+			getApp().globalData.request = {}
+		},
 		computed: {
 			username() {
 				return getApp().globalData.userInfo.username

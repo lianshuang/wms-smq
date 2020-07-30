@@ -25,6 +25,7 @@
 					console.log(res);
 					if(res.code===200){
 						this.getStepRouter(res.data.step)
+						getApp().globalData.request = {...getApp().globalData.request,...res.data.params}
 					}
 					uni.hideLoading();
 				}).catch(err=>{uni.hideLoading();})

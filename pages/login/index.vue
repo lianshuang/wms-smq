@@ -80,7 +80,6 @@
 				}
 				this.submiting = true
 				login(loginParams).then(res => {
-					console.log(res);
 					uni.setStorageSync('token', res.token);
 					getApp().globalData.token = res.token
 					this.getInfo()

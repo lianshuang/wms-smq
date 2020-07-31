@@ -54,6 +54,37 @@
 			"style": {
 				"navigationBarTitleText": "输入SKU包装信息"
 			}
+		},
+		// 上架
+		{
+			"path": "pages/shelf/index",
+			"style": {
+				"navigationBarTitleText": "上架"
+			}
+		},
+		{
+			"path": "pages/shelf/shelf1",
+			"style": {
+				"navigationBarTitleText": "扫描入库单号"
+			}
+		},
+		{
+			"path": "pages/shelf/shelf2",
+			"style": {
+				"navigationBarTitleText": "扫描SKU"
+			}
+		},
+		{
+			"path": "pages/shelf/shelf3",
+			"style": {
+				"navigationBarTitleText": "输入SKU上架数量"
+			}
+		},
+		{
+			"path": "pages/shelf/shelf4",
+			"style": {
+				"navigationBarTitleText": "扫描库位"
+			}
 		}
 	],
 	"globalStyle": {

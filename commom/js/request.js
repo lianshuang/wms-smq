@@ -99,12 +99,31 @@ const request = (method, url, options) => {
 			header: headers,
 			success: res => {
 				if (res.statusCode == 200) {
-					// if (res.data && (res.data.code == 200 || res.data.code == "00" || url.includes('login')|| url.includes('auth/info/'))) {
-					//     resolve(res.data)
-					// } else {
-					//     checkError(res, reject)
-					// }
-					resolve(res.data)
+					if (res.data.code === 401 && res.data.detail === 'Signature has expired.' && res.data.message ===
+						'Auth failed') {
+						// 登录失效
+						uni.showToast({
+							title: '登陆已失效',
+							mask: true,
+							duration: 2000,
+							icon: 'none',
+							position: 'top'
+						});
+						setTimeout(function() {
+							// 移除token等信息
+							getApp().globalData = {
+								token: '',
+								userInfo: {},
+								request: {}
+							}
+							uni.clearStorageSync();
+							uni.redirectTo({
+								url: '../../pages/login/index'
+							})
+						}, 2010)
+					} else {
+						resolve(res.data)
+					}
 				} else {
 					const msg = res.statusCode + (res.data.detail ? ':' + res.data.detail : '')
 					uni.showToast({

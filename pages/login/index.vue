@@ -83,7 +83,7 @@
 					uni.setStorageSync('token', res.token);
 					getApp().globalData.token = res.token
 					this.getInfo()
-				}).catch(err=>{console.log('错误');console.log(err);this.submiting = false})
+				}).catch(err=>{console.log('错误');this.submiting = false})
 			},
 			// 获取个人信息
 			getInfo() {

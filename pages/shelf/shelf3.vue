@@ -136,13 +136,6 @@
 								master_order_num: res.data.master_order_num
 							}
 						}
-						uni.showToast({
-							title: '收货成功',
-							mask: true,
-							duration: 2000,
-							icon: 'none',
-							position: 'top'
-						});
 						uni.redirectTo({
 							url: this.getRoutePath().basicPath + res.data.step
 						})

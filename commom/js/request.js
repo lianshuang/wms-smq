@@ -11,7 +11,7 @@ const dataObj = (url, params) => {
 	options = {
 		...params,
 		data,
-		sign,
+		// sign,
 		terminal
 	}
 	// #endif
@@ -28,7 +28,8 @@ const goLogin = () => {
 
 // 请求错误处理
 const checkError = (e, reject) => {
-	// console.error("----接口错误----", e)
+	console.error("----接口错误----")
+	console.log(e);
 	if (e.data) {
 		if (e.data.code) {
 			switch (Number(e.data.code)) {
@@ -92,12 +93,18 @@ const request = (method, url, options) => {
 		if (!url.includes('login')) {
 			headers['Authorization'] = 'Bearer ' + getApp().globalData.token
 		}
+		console.log('请求了');
+		
+		console.log(`${base.BASE_URL}${url}`);
+		console.log(options);
 		uni.request({
 			url: `${base.BASE_URL}${url}`,
 			method: methods,
 			data: dataObj(url, options),
 			header: headers,
 			success: res => {
+				console.log(res);
+				console.log('成功');
 				if (res.statusCode == 200) {
 					if (res.data.code === 401 && res.data.detail === 'Signature has expired.' && res.data.message ===
 						'Auth failed') {
@@ -139,6 +146,9 @@ const request = (method, url, options) => {
 				}
 			},
 			fail: e => {
+				console.log('失败 ！');
+				console.log(e);
+				console.log(reject);
 				checkError(e, reject)
 			},
 			complete: () => {

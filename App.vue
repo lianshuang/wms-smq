@@ -1,5 +1,6 @@
 <script>
 	import pageAnimation from './components/page-animation'
+	import base from './commom/js/config.js'
 	export default {
 		mixins: [pageAnimation],
 		globalData: {
@@ -47,6 +48,8 @@
 		},
 		onShow: function() {
 			console.log('App Show');
+			console.log(base);
+			
 		},
 		onHide: function() {
 			console.log('App Hide');
@@ -55,6 +58,7 @@
 </script>
 
 <style lang="scss">
+	@import url("./static/font/iconfont.css");
 	/deep/ .uni-mask {
 		background: rgba(0, 0, 0, .5) !important;
 	}
@@ -62,6 +66,7 @@
 	/deep/ .uni-navbar__header {
 		color: #fff !important;
 		background-color: #484370 !important;
+		padding-top: 30rpx;
 
 		.icon-left {
 			font-size: 40rpx;
@@ -77,7 +82,7 @@
 	.operation {
 		padding: 10rpx 30rpx 45px 30rpx;
 		box-sizing: border-box;
-		min-height: calc(100vh - 45px);
+		min-height: calc(100vh - 45px - 30rpx);
 
 		.top-info {
 			font-size: 30rpx;

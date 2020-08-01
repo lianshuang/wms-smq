@@ -1,5 +1,5 @@
 const ENV = process.env.NODE_ENV; 
-console.log('当前环境', process.env.NODE_ENV)
+// console.log('当前环境', process.env.NODE_ENV)
 
 const apiHub = {
     //开发环境
@@ -11,7 +11,7 @@ const apiHub = {
 
     //测试环境
     test: {
-        BASE_URL: "https://xxx",
+        BASE_URL: "http://127.0.0.1:8000/",
         IMG_URL: "https://xxx",
         BASE_UPLOAD_URL: "",
     },

@@ -3,8 +3,8 @@ import App from './App'
 
 Vue.config.productionTip = false
 
-// 字体图标
-import './static/font/iconfont.css'
+// 字体图标 = App端不支持在js里面引用css
+// import './static/font/iconfont.css'
 
 // 全局设置用户名
 Vue.prototype.$setUsername = function(username) {

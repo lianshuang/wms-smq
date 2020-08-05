@@ -84,13 +84,14 @@
 		bottom: 0;
 		right: 0;
 		.a_box{
-			width: 500upx;
+			width: 90%;
+			padding-top: 30rpx;
 			overflow: hidden;
 			
 			background-color: #fff;
 			border-radius: 10upx;
 			position: absolute;
-			top: 40%;
+			top: 45%;
 			left: 50%;
 			transform: translate(-50%,-50%);
 			

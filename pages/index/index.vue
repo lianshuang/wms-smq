@@ -59,13 +59,13 @@
 						text: '打包',
 						path: 'bale',
 						color: '#1f43c5'
-					},
-					{
-						icon: 'iconfahuo',
-						text: '发货',
-						path: 'ship',
-						color: '#f90909'
 					}
+					// {
+					// 	icon: 'iconfahuo',
+					// 	text: '发货',
+					// 	path: 'ship',
+					// 	color: '#f90909'
+					// }
 				]
 			}
 		},

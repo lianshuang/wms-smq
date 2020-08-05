@@ -93,10 +93,6 @@ const request = (method, url, options) => {
 		if (!url.includes('login')) {
 			headers['Authorization'] = 'Bearer ' + getApp().globalData.token
 		}
-		console.log('请求了');
-		
-		console.log(`${base.BASE_URL}${url}`);
-		console.log(options);
 		uni.request({
 			url: `${base.BASE_URL}${url}`,
 			method: methods,

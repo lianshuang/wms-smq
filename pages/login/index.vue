@@ -12,11 +12,18 @@
 			<view class="submit">
 				<button type="primary" :loading="submiting" :disabled="submiting" size="mini" @click="login()">登 录</button>
 			</view>
+			<view class="setting">
+				<button @click="cancelShow=true" size="mini" type="default"><i class="iconfont iconziyuan"></i>环境设置</button>
+			</view>
 		</view>
+		<hFormAlert v-if="cancelShow" :title="base.BASE_URL+'(当前)'" name="host" placeholder="请输入请求地址" @confirm="confirm"
+		 @cancel="cancel"></hFormAlert>
 	</view>
 </template>
 
 <script>
+	import hFormAlert from '@/components/h-form-alert/h-form-alert.vue';
+	import base from '../../commom/js/config.js'
 	import {
 		login,
 		getInfo
@@ -27,8 +34,14 @@
 				username: '',
 				password: '',
 				submiting: false,
-				firstEnter: true
+				firstEnter: true,
+				environment: '',
+				cancelShow: false,
+				base: {}
 			}
+		},
+		components: {
+			hFormAlert
 		},
 		onShow() {
 			this.checkLogin()
@@ -38,10 +51,34 @@
 		},
 		created() {
 			console.log('on create--------------');
+			this.environment = process.env.NODE_ENV
+			console.log(base);
+			this.base = base
 		},
 		methods: {
+			// 修改host确认
+			confirm(data) {
+				let host = data.host.trim()
+				if (!host) {
+					return
+				}
+				if (!host.startsWith('http')) {
+					host = 'http://' + host
+				}
+				if (!host.endsWith('/')) {
+					host += '/'
+				}
+				console.log(host);
+				this.base.BASE_URL = host
+				uni.setStorageSync('BASE_URL', host);
+				this.cancelShow = false
+			},
+			// 取消修改
+			cancel() {
+				this.cancelShow = false
+			},
 			// 检查是否已经登陆过
-			checkLogin(){
+			checkLogin() {
 				if (getApp().globalData.token) {
 					this.getInfo()
 				} else if (uni.getStorageSync('token')) {
@@ -83,12 +120,15 @@
 					uni.setStorageSync('token', res.token);
 					getApp().globalData.token = res.token
 					this.getInfo()
-				}).catch(err=>{console.log('错误');this.submiting = false})
+				}).catch(err => {
+					console.log('错误');
+					this.submiting = false
+				})
 			},
 			// 获取个人信息
 			getInfo() {
 				getInfo({}).then(res => {
-					if(res.id){
+					if (res.id) {
 						// 跳转首页
 						getApp().globalData.userInfo = res
 						uni.setStorageSync('userInfo', JSON.stringify(res));
@@ -96,7 +136,7 @@
 						uni.navigateTo({
 							url: '../index/index'
 						});
-					} else{
+					} else {
 						uni.showToast({
 							title: res.message,
 							mask: true,
@@ -106,7 +146,9 @@
 						});
 					}
 					this.submiting = false
-				}).catch(err=>{this.submiting = false})
+				}).catch(err => {
+					this.submiting = false
+				})
 			}
 		}
 	}
@@ -168,6 +210,12 @@
 					width: 100%;
 					padding: 10rpx 0;
 				}
+			}
+
+			.setting {
+				margin-top: 10rpx;
+				text-align: center;
+				font-size: 30rpx;
 			}
 		}
 	}

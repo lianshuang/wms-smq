@@ -16,6 +16,11 @@
 				mask: true
 			});
 
+			// 设置请求地址
+			if (uni.getStorageSync('BASE_URL')) {
+				base.BASE_URL = uni.getStorageSync('BASE_URL')
+			}
+
 			// 设置信息
 			if (!getApp().globalData.token && !uni.getStorageSync('token')) {
 				uni.navigateTo({
@@ -48,8 +53,6 @@
 		},
 		onShow: function() {
 			console.log('App Show');
-			console.log(base);
-			
 		},
 		onHide: function() {
 			console.log('App Hide');
@@ -59,6 +62,7 @@
 
 <style lang="scss">
 	@import url("./static/font/iconfont.css");
+
 	/deep/ .uni-mask {
 		background: rgba(0, 0, 0, .5) !important;
 	}
@@ -122,6 +126,7 @@
 				font-size: 36rpx;
 				font-weight: 600;
 			}
+
 			.scanner-label {
 				font-size: 36rpx;
 				font-weight: bold;

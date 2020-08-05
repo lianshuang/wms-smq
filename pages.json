@@ -85,6 +85,50 @@
 			"style": {
 				"navigationBarTitleText": "扫描库位"
 			}
+		},
+		// 拣选
+		{
+			"path": "pages/pick/index",
+			"style": {
+				"navigationBarTitleText": "拣选"
+			}
+		},
+		{
+			"path": "pages/pick/pick1",
+			"style": {
+				"navigationBarTitleText": "扫描入拣选单号"
+			}
+		},
+		{
+			"path": "pages/pick/pick2",
+			"style": {
+				"navigationBarTitleText": "扫描SKU条码"
+			}
+		},
+		// 打包
+		{
+			"path": "pages/bale/index",
+			"style": {
+				"navigationBarTitleText": "打包"
+			}
+		},
+		{
+			"path": "pages/bale/bale1",
+			"style": {
+				"navigationBarTitleText": "扫描拣选队列号"
+			}
+		},
+		{
+			"path": "pages/bale/bale2",
+			"style": {
+				"navigationBarTitleText": "扫描Pallet ID"
+			}
+		},
+		{
+			"path": "pages/bale/bale3",
+			"style": {
+				"navigationBarTitleText": "输入SKU或分拣箱条码"
+			}
 		}
 	],
 	"globalStyle": {

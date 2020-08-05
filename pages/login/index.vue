@@ -120,7 +120,7 @@
 
 		.login-box {
 			width: 80vw;
-			height: 460rpx;
+			height: 520rpx;
 			background-color: #fff;
 			position: fixed;
 			padding: 0 30rpx;

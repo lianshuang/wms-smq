@@ -12,3 +12,7 @@ export const getStep = params => http.post(`api/scanner/get_step/`, params)
 
 // 统一进行回车下一步操作
 export const nextStep = params => http.post(`api/scanner/next_step/`, params || {})
+
+
+// 拣选跳过
+export const pick_ship_pick_order = params => http.post(`api/scanner/pick_ship_pick_order/`, params || {})

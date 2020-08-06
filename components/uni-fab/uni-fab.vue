@@ -5,7 +5,8 @@
         'uni-fab--rightBottom': rightBottom,
         'uni-fab--leftTop': leftTop,
         'uni-fab--rightTop': rightTop
-      }" class="uni-fab">
+      }"
+		 class="uni-fab">
 			<view :class="{
           'uni-fab__content--left': horizontal === 'left',
           'uni-fab__content--right': horizontal === 'right',
@@ -13,9 +14,12 @@
           'uni-fab__content--flexDirectionStart': flexDirectionStart,
           'uni-fab__content--flexDirectionEnd': flexDirectionEnd,
 		  'uni-fab__content--other-platform': !isAndroidNvue
-        }" :style="{ width: boxWidth, height: boxHeight, backgroundColor: styles.backgroundColor }" class="uni-fab__content" elevation="5">
+        }"
+			 :style="{ width: boxWidth, height: boxHeight, backgroundColor: styles.backgroundColor }" class="uni-fab__content"
+			 elevation="5">
 				<view v-if="flexDirectionStart || horizontalLeft" class="uni-fab__item uni-fab__item--first" />
-				<view v-for="(item, index) in content" :key="index" :class="{ 'uni-fab__item--active': isShow }" class="uni-fab__item" @click="_onItemClick(index, item)">
+				<view v-for="(item, index) in content" :key="index" :class="{ 'uni-fab__item--active': isShow }" class="uni-fab__item"
+				 @click="_onItemClick(index, item)">
 					<image :src="item.active ? item.selectedIconPath : item.iconPath" class="uni-fab__item-image" mode="widthFix" />
 					<text class="uni-fab__item-text" :style="{ color: item.active ? styles.selectedColor : styles.color }">{{ item.text }}</text>
 				</view>
@@ -28,9 +32,11 @@
 		  'uni-fab__circle--leftTop': leftTop,
 		  'uni-fab__circle--rightTop': rightTop,
 		  'uni-fab__content--other-platform': !isAndroidNvue
-		}" class="uni-fab__circle uni-fab__plus" :style="{ 'background-color': styles.buttonColor }" @click="_onClick">
+		}"
+		 class="uni-fab__circle uni-fab__plus" :style="{ 'background-color': styles.buttonColor }" @click="_onClick">
 			<view class="fab-circle-v" :class="{'uni-fab__plus--active': isShow}"></view>
 			<view class="fab-circle-h" :class="{'uni-fab__plus--active': isShow}"></view>
+			<!-- <image src="../../static/search.png" class="uni-fab__item-image" mode="widthFix" /> -->
 		</view>
 	</view>
 </template>
@@ -102,7 +108,7 @@
 				isShow: false,
 				isAndroidNvue: platform === 'android',
 				styles: {
-					color: '#3c3e49',
+					color: '#000',
 					selectedColor: '#007AFF',
 					backgroundColor: '#fff',
 					buttonColor: '#3c3e49'
@@ -207,7 +213,7 @@
 	}
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 	.uni-fab {
 		position: fixed;
 		/* #ifndef APP-NVUE */
@@ -267,7 +273,7 @@
 		align-items: center;
 		width: 55px;
 		height: 55px;
-		background-color: #3c3e49;
+		background-color: #fff;
 		border-radius: 55px;
 		z-index: 11;
 	}
@@ -330,7 +336,8 @@
 		height: 31px;
 		left: 26px;
 		top: 12px;
-		background-color: white;
+		background-color: #000;
+		// background-color: white;
 		transform: rotate(0deg);
 		transition: transform 0.3s;
 	}
@@ -341,7 +348,8 @@
 		height: 3px;
 		left: 12px;
 		top: 26px;
-		background-color: white;
+		background-color: #000;
+		// background-color: white;
 		transform: rotate(0deg);
 		transition: transform 0.3s;
 	}
@@ -418,7 +426,7 @@
 	}
 
 	.uni-fab__item-text {
-		color: #FFFFFF;
+		color: #000;
 		font-size: 12px;
 	}
 

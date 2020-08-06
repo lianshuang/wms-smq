@@ -129,6 +129,20 @@
 			"style": {
 				"navigationBarTitleText": "输入SKU或分拣箱条码"
 			}
+		},
+		// 查询sku库存
+		{
+			"path": "pages/sku/index",
+			"style": {
+				"navigationBarTitleText": "查询SKU库存"
+			}
+		},
+		// 查询库位库存
+		{
+			"path": "pages/warehouse/index",
+			"style": {
+				"navigationBarTitleText": "查询库位库存"
+			}
 		}
 	],
 	"globalStyle": {

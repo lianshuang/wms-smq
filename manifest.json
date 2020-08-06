@@ -48,5 +48,9 @@
         "setting" : {
             "urlCheck" : true
         }
+    },
+    "h5" : {
+        "title" : "wms-smq",
+        "domain" : ""
     }
 }

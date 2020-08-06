@@ -62,6 +62,13 @@
 
 <style lang="scss">
 	@import url("./static/font/iconfont.css");
+	.step {
+		position: fixed;
+		width: 100vw;
+		left: 0;
+		top: 0;
+		z-index: 888;
+	}
 
 	/deep/ .uni-mask {
 		background: rgba(0, 0, 0, .5) !important;
@@ -70,7 +77,7 @@
 	/deep/ .uni-navbar__header {
 		color: #fff !important;
 		background-color: #484370 !important;
-		padding-top: 30rpx;
+		padding-top: 40rpx;
 
 		.icon-left {
 			font-size: 40rpx;
@@ -84,9 +91,11 @@
 
 	// 操作栏
 	.operation {
-		padding: 10rpx 30rpx 45px 30rpx;
+		padding: 10rpx 30rpx 65px 30rpx;
 		box-sizing: border-box;
-		min-height: calc(100vh - 45px - 30rpx);
+		min-height: calc(100vh);
+		padding-top: 65px;
+		// margin-top: 65px;
 
 		.top-info {
 			font-size: 30rpx;
@@ -99,8 +108,21 @@
 			margin-top: 30rpx;
 
 			.list-table {
+				border: 2rpx solid #cecece;
 				table {
 					width: 100%;
+					color: #304456;
+					text-align: center;
+					th {
+						display: flex;
+						justify-content: space-evenly;
+						flex-wrap: nowrap;
+						background-color: #eee;
+						td {
+							flex-grow: 1;
+							flex: 1;
+						}
+					}
 
 					tr {
 						display: flex;

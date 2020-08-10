@@ -34,9 +34,9 @@
 		  'uni-fab__content--other-platform': !isAndroidNvue
 		}"
 		 class="uni-fab__circle uni-fab__plus" :style="{ 'background-color': styles.buttonColor }" @click="_onClick">
-			<view class="fab-circle-v" :class="{'uni-fab__plus--active': isShow}"></view>
-			<view class="fab-circle-h" :class="{'uni-fab__plus--active': isShow}"></view>
-			<!-- <image src="../../static/search.png" class="uni-fab__item-image" mode="widthFix" /> -->
+			<!-- <view class="fab-circle-v" :class="{'uni-fab__plus--active': isShow}"></view>
+			<view class="fab-circle-h" :class="{'uni-fab__plus--active': isShow}"></view> -->
+			<image src="../../static/search.png" :class="{'uni-fab__plus--active': isShow, 'uni-fab__plus--noactive': !isShow}" class="uni-fab__item-image" mode="widthFix" />
 		</view>
 	</view>
 </template>
@@ -355,7 +355,13 @@
 	}
 
 	.uni-fab__plus--active {
-		transform: rotate(135deg);
+		transition: all .5s;
+		transform: rotate(360deg);
+	}
+	
+	.uni-fab__plus--noactive {
+		transition: all .5s;
+		transform: rotate(-360deg);
 	}
 
 	.uni-fab__content {

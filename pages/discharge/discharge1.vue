@@ -4,7 +4,7 @@
 		<view class="step">
 			<uni-nav-bar :shadow='false' title="卸货" @clickLeft="backToIndex()">
 				<view slot="left">
-					<i class="iconfont iconfanhui1 icon-left"/>
+					<i class="iconfont iconfanhui1 icon-left" />
 				</view>
 				<view slot="right"> <text>{{$username}}</text> </view>
 			</uni-nav-bar>
@@ -27,7 +27,8 @@
 
 <script>
 	import {
-		nextStep
+		nextStep,
+		finish_task
 	} from '../../commom/js/api.js'
 	export default {
 		data() {
@@ -40,22 +41,6 @@
 			}
 		},
 		computed: {
-			// 获取页面路由信息
-			// getRoutePath() {
-			// 	const path = getCurrentPages()[getCurrentPages().length - 1]['$route']['path']
-			// 	const step = Number(path.slice(-1))
-			// 	const basicPath = './' + path.split('/')[3].slice(0, -1)
-			// 	const lastPath = step - 1 === 0 ?
-			// 		'../index/index' : './' + basicPath + (step - 1 - 1)
-			// 	const nextPath = './' + path.split('/')[3].slice(0, -1) + (step + 1)
-			// 	return {
-			// 		step,
-			// 		path,
-			// 		lastPath,
-			// 		nextPath,
-			// 		basicPath
-			// 	}
-			// },
 			// 获取当前步骤需要提交的表单信息
 			requestData() {
 				return {
@@ -70,11 +55,6 @@
 			this.option = option
 		},
 		methods: {
-			// backToIndex(){
-			// 	uni.redirectTo({
-			// 		url: '../index/index'
-			// 	});
-			// },
 			// 校验
 			validateForm() {
 				return new Promise((resolve, reject) => {
@@ -93,9 +73,46 @@
 			},
 			// 返回
 			back() {
-				uni.redirectTo({
-					url: this.getRoutePath().lastPath
-				})
+				const _this = this
+				uni.showModal({
+					title: '提示',
+					content: '确定强制结束所有卸货作业？',
+					success: function(res) {
+						if (res.confirm) {
+							// 调用接口
+							finish_task(_this.filterRequest(_this.requestData)).then(res => {
+								console.log(res);
+								if (res.code === 200) {
+									uni.showToast({
+										title: res.msg,
+										duration: 2000,
+										icon: 'none',
+										mask: true,
+										position: 'top',
+										success: function() {
+											setTimeout(() => {
+												uni.redirectTo({
+													url: '../index/index'
+												});
+											}, 1900)
+										}
+									});
+								} else {
+									uni.showToast({
+										title: res.msg || res.message || 'fail request! please check!',
+										mask: true,
+										duration: 2000,
+										icon: 'none',
+										position: 'top'
+									});
+								}
+							})
+
+						} else if (res.cancel) {
+							console.log('用户点击取消');
+						}
+					}
+				});
 			},
 			// 下一步
 			async nextStep() {
@@ -127,6 +144,7 @@
 							position: 'top'
 						});
 					}
+					uni.hideLoading()
 				})
 			},
 		}

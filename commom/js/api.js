@@ -22,3 +22,6 @@ export const sku_search = params => http.post(`api/scanner/sku_search/`, params 
 
 // 查询库位库存
 export const position_search = params => http.post(`api/scanner/position_search/`, params || {})
+
+// 步骤操作点击完成
+export const finish_task = params => http.post(`api/scanner/finish_task/`, params || {})

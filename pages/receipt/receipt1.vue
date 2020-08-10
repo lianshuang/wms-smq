@@ -27,7 +27,8 @@
 
 <script>
 	import {
-		nextStep
+		nextStep,
+		finish_task
 	} from '../../commom/js/api.js'
 	export default {
 		data() {
@@ -72,9 +73,46 @@
 			},
 			// 返回
 			back() {
-				uni.redirectTo({
-					url: this.getRoutePath().lastPath
-				})
+				const _this = this
+				uni.showModal({
+					title: '提示',
+					content: '确定强制结束所有收货作业？',
+					success: function(res) {
+						if (res.confirm) {
+							// 调用接口
+							finish_task(_this.filterRequest(_this.requestData)).then(res => {
+								console.log(res);
+								if (res.code === 200) {
+									uni.showToast({
+										title: res.msg,
+										duration: 2000,
+										icon: 'none',
+										mask: true,
+										position: 'top',
+										success: function() {
+											setTimeout(() => {
+												uni.redirectTo({
+													url: '../index/index'
+												});
+											}, 1900)
+										}
+									});
+								} else {
+									uni.showToast({
+										title: res.msg || res.message || 'fail request! please check!',
+										mask: true,
+										duration: 2000,
+										icon: 'none',
+										position: 'top'
+									});
+								}
+							})
+				
+						} else if (res.cancel) {
+							console.log('用户点击取消');
+						}
+					}
+				});
 			},
 			// 下一步
 			async nextStep() {

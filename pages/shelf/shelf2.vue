@@ -26,7 +26,7 @@
 			</view>
 			<!-- 底栏操作按钮 -->
 			<view class="bottom-btn">
-				<button class="left" type="primary" @click="back()" :loading="false">完成</button>
+				<button class="left" type="primary" @click="back()" :loading="false">返回</button>
 				<button class="right" type="primary" @click="nextStep()" :loading="false">确定</button>
 			</view>
 		</view>
@@ -81,21 +81,9 @@
 			},
 			// 返回
 			back() {
-				uni.showModal({
-					title: '提示',
-					content: `确定退出(${getApp().globalData.request.master_order_num})的收货？`,
-					success: function(res) {
-						if (res.confirm) {
-							const {type} = getApp().globalData.request
-							getApp().globalData.request = { type }
-							uni.redirectTo({
-								url: './receipt1'
-							})
-						} else if (res.cancel) {
-							console.log('用户点击取消');
-						}
-					}
-				});
+				uni.redirectTo({
+					url: this.getRoutePath().lastPath
+				})
 			},
 			// 下一步
 			async nextStep() {

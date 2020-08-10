@@ -49,6 +49,7 @@
 				}
 				uni.hideLoading();
 			}, 1000)
+			uni.hideLoading() 
 
 		},
 		onShow: function() {

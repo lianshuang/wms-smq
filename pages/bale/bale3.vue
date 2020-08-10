@@ -141,7 +141,7 @@
 							}
 						}
 						uni.showToast({
-							title: '收货成功',
+							title: '打包成功',
 							mask: true,
 							duration: 2000,
 							icon: 'none',

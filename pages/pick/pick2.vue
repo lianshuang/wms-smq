@@ -25,7 +25,9 @@
 			</view>
 			<!-- 底部信息 -->
 			<view class="bottom-info">
-				<text>实际拣选件数: {{requestData.actual_pick}}</text>
+				<view>实际已拣选件数: {{requestData.actual_pick}}</view>
+				<view>本次拣选件数: {{formData.pick_num}}</view>
+				<input class="pick_num" type="number" placeholder="请输入本次拣选数量" v-model.number="formData.pick_num" />
 			</view>
 			<!-- 底栏操作按钮 -->
 			<view class="bottom-btn">
@@ -72,7 +74,7 @@
 				return new Promise((resolve, reject) => {
 					if (!this.formData.sku_code) {
 						uni.showToast({
-							title: '请输入箱数',
+							title: '请输入或扫描SKU条码',
 							icon: 'none',
 							mask: true,
 							duration: 2000
@@ -162,5 +164,11 @@
 	}
 </script>
 
-<style>
+<style scoped lang="scss">
+	.pick_num {
+		border: 1rpx solid #ccc;
+		padding: 15rpx 20rpx;
+		width: 40vw;
+		font-size: 30rpx;
+	}
 </style>

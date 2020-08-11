@@ -26,6 +26,7 @@
 	import uniGridItem from "@/components/uni-grid-item/uni-grid-item.vue"
 	import uniNavBar from "@/components/uni-nav-bar/uni-nav-bar.vue"
 	import uniFab from '@/components/uni-fab/uni-fab.vue';
+	// const Qs = require('qs')
 	export default {
 		components: {
 			uniGrid,
@@ -42,17 +43,18 @@
 					buttonColor: ''
 				},
 				content: [{
-					iconPath: '/static/sku.png',
-					selectedIconPath: '/static/sku.png',
-					text: 'sku库存',
-					active: true
-				},
-				{
-					iconPath: '/static/kc.png',
-					selectedIconPath: '/static/kc.png',
-					text: '库位库存',
-					active: false
-				}],
+						iconPath: '/static/sku.png',
+						selectedIconPath: '/static/sku.png',
+						text: 'sku库存',
+						active: true
+					},
+					{
+						iconPath: '/static/kc.png',
+						selectedIconPath: '/static/kc.png',
+						text: '库位库存',
+						active: false
+					}
+				],
 				horizontal: 'left',
 				vertical: 'bottom',
 				direction: 'vertical',
@@ -103,9 +105,22 @@
 				return getApp().globalData.userInfo.username
 			}
 		},
+		created() {
+			// this.$axios.post('http://127.0.0.1:8001', Qs.stringify({
+			// 	action: 'getPrinterList'
+			// })).then((res) => {
+			// 	if (res.status === 200) {
+			// 		this.printer_list = res.data.data
+			// 	} else {
+			// 		this.$message.error('获取打印机失败')
+			// 	}
+			// }).catch(() => {
+			// 	this.$message.error('获取打印机失败')
+			// })
+		},
 		methods: {
 			trigger(data) {
-				switch (data.index){
+				switch (data.index) {
 					case 0:
 						uni.navigateTo({
 							url: '../sku/index'
@@ -119,11 +134,9 @@
 					default:
 						break;
 				}
-					
+
 			},
-			fabClick() {
-				console.log('121221');
-			},
+			fabClick() {},
 			// 跳转
 			navigatorTo(e) {
 				const type = this.grid_array[e.detail.index]['path']

@@ -93,14 +93,13 @@ const request = (method, url, options) => {
 		if (!url.includes('login')) {
 			headers['Authorization'] = 'Bearer ' + getApp().globalData.token
 		}
+		const requestUrl = url.includes('127')||url.includes('192')?url:`${base.BASE_URL}${url}`
 		uni.request({
-			url: `${base.BASE_URL}${url}`,
+			url: requestUrl,
 			method: methods,
 			data: dataObj(url, options),
 			header: headers,
 			success: res => {
-				console.log(res);
-				console.log('成功');
 				if (res.statusCode == 200) {
 					if (res.data.code === 401 && res.data.detail === 'Signature has expired.' && res.data.message ===
 						'Auth failed') {
@@ -142,9 +141,6 @@ const request = (method, url, options) => {
 				}
 			},
 			fail: e => {
-				console.log('失败 ！');
-				console.log(e);
-				console.log(reject);
 				checkError(e, reject)
 			},
 			complete: () => {

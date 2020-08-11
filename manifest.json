@@ -51,6 +51,12 @@
     },
     "h5" : {
         "title" : "wms-smq",
-        "domain" : ""
+        "domain" : "",
+        "devServer" : {
+            "https" : false
+        },
+        "sdkConfigs" : {
+            "maps" : {}
+        }
     }
 }

@@ -25,3 +25,10 @@ export const position_search = params => http.post(`api/scanner/position_search/
 
 // 步骤操作点击完成
 export const finish_task = params => http.post(`api/scanner/finish_task/`, params || {})
+
+// 获取打印机和调用打印机
+// export const printer = (url, params) => http.post('http://127.0.0.1' + `:8001`, params || {})
+export const printer = (url, params) => http.post(url + `:8001/`, params || {})
+
+// 通过字典获取内网ip
+export const get_intranet = () => http.get(`api/dicts/`, {page:1,size:100000,key:'intranet'} || {})

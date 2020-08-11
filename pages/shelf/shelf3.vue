@@ -76,7 +76,6 @@
 			// 校验
 			validateForm() {
 				return new Promise((resolve, reject) => {
-					console.log(this.formData.width);
 					if (!this.formData.pieces) {
 						uni.showToast({
 							title: '请输入确保输入上架数量',

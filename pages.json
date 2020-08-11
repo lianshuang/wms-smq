@@ -102,6 +102,12 @@
 		{
 			"path": "pages/pick/pick2",
 			"style": {
+				"navigationBarTitleText": "扫描库位"
+			}
+		},
+		{
+			"path": "pages/pick/pick3",
+			"style": {
 				"navigationBarTitleText": "扫描SKU条码"
 			}
 		},

@@ -101,26 +101,6 @@
 				uni.redirectTo({
 					url: this.getRoutePath().basicPath + 3
 				})
-				// nextStep(this.filterRequest(this.requestData)).then(res => {
-				// 	if (res.code === 200) {
-				// 		if (res.data.step != 1) {
-				// 			getApp().globalData.request = { ...getApp().globalData.request,
-				// 				...res.data
-				// 			}
-				// 		}
-				// 		uni.redirectTo({
-				// 			url: this.getRoutePath().basicPath + res.data.step
-				// 		})
-				// 	} else {
-				// 		uni.showToast({
-				// 			title: res.detail || res.message || 'fail request! please check!',
-				// 			mask: true,
-				// 			duration: 2000,
-				// 			icon: 'none',
-				// 			position: 'top'
-				// 		});
-				// 	}
-				// })
 			},
 		}
 	}

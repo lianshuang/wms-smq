@@ -125,7 +125,6 @@
 				this.loading = false
 				if (!flag) return
 				sku_search(this.filterRequest(this.requestData)).then(res => {
-					console.log(res);
 					if (res.code === 200) {
 						getApp().globalData.request = { ...getApp().globalData.request,
 							...res.data

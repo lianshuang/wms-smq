@@ -77,7 +77,6 @@
 			// 校验
 			validateForm() {
 				return new Promise((resolve, reject) => {
-					console.log(this.formData.width);
 					if (!this.formData.location) {
 						uni.showToast({
 							title: '请输入确保输入库位',

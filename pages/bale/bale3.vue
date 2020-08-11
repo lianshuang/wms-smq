@@ -33,8 +33,11 @@
 </template>
 
 <script>
+	const Qs = require('qs')
 	import {
-		nextStep
+		nextStep,
+		printer,
+		get_intranet
 	} from '../../commom/js/api.js'
 	export default {
 		data() {
@@ -47,7 +50,9 @@
 				initData: {},
 				comfirm: false,
 				option: {},
-				loading: false
+				loading: false,
+				// 内网ip
+				intranet: ''
 			}
 		},
 		computed: {
@@ -64,6 +69,14 @@
 			this.option = option
 		},
 		created() {
+			get_intranet().then(res => {
+				console.log(res);
+				if (res.code === 200) {
+					this.intranet = res.data[0].value
+				} else {
+					console.log('获取不到内网ip，请重试！');
+				}
+			})
 			const t = getApp().globalData.request
 			Object.keys(t).forEach(i => {
 				if (i.startsWith('$')) {
@@ -98,8 +111,12 @@
 					content: `确定退出(${getApp().globalData.request.master_order_num})的打包？`,
 					success: function(res) {
 						if (res.confirm) {
-							const {type} = getApp().globalData.request
-							getApp().globalData.request = { type }
+							const {
+								type
+							} = getApp().globalData.request
+							getApp().globalData.request = {
+								type
+							}
 							uni.redirectTo({
 								url: './bale'
 							})
@@ -129,6 +146,25 @@
 				nextStep(this.filterRequest(this.requestData)).then(res => {
 					console.log(res);
 					if (res.code === 200) {
+						// 获取面单base64数据
+						const PrinterName = 'Generic 26C-7SeriesPCL'
+						const labelContent = res.data.label_base64
+						this.$axios.post(this.intranet + ':8001', Qs.stringify({
+							action: 'doPrint',
+							printerName: PrinterName,
+							print_too: 'sumatrapdf',
+							printQty: 1,
+							label: labelContent,
+							type: 'pdf'
+						})).then((res) => {
+							if (res.data.status === 1) {
+								this.$message.success('打印成功')
+							} else {
+								this.$message.error('打印失败')
+							}
+						}).catch(() => {
+							this.$message.error('打印失败')
+						})
 						if (res.data.step != 1) {
 							getApp().globalData.request = { ...getApp().globalData.request,
 								...res.data

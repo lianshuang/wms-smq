@@ -112,11 +112,6 @@
 						// 正负百分之50提醒校验
 						let str = '您填写的'
 						let flag = true
-						console.log('zheli ');
-						console.log(this.getNum50Range(this.initData.length));
-						console.log(this.getNum50Range(this.initData.width));
-						console.log(this.getNum50Range(this.initData.height));
-						console.log(this.getNum50Range(this.initData.weight));
 						if (this.formData.length <= this.getNum50Range(this.initData.length)[0] || this.formData.length >= this.getNum50Range(
 								this.initData.length)[1]) {
 							flag = false

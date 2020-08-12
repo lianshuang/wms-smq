@@ -19,7 +19,7 @@
 			</view>
 			<view class="scanner">
 				<text class="scanner-label">扫描Pallet ID：</text>
-				<input class="scanner-input" type="text" placeholder="扫描Pallet ID" @confirm="nextStep()" v-model="formData.pallet_id" />
+				<input class="scanner-input" type="text" placeholder="扫描Pallet ID" focus @confirm="nextStep()" v-model="formData.pallet_id" />
 			</view>
 			<!-- 底栏操作按钮 -->
 			<view class="bottom-btn">

@@ -18,7 +18,7 @@
 			</view>
 			<view class="scanner">
 				<text class="scanner-label">扫描SKU NO.：</text>
-				<input class="scanner-input" type="text" placeholder="扫描商品SKU NO." @confirm="nextStep()" v-model="formData.sku_code" />
+				<input class="scanner-input" type="text" focus placeholder="扫描商品SKU NO." @confirm="nextStep()" v-model="formData.sku_code" />
 			</view>
 			<!-- 底部信息 -->
 			<view class="bottom-info">

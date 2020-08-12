@@ -13,7 +13,7 @@
 		<view class="operation">
 			<view class="scanner">
 				<view class="scanner-label">扫描拣选单号：</view>
-				<input class="scanner-input" type="text" placeholder="请扫描拣选单号" @confirm="nextStep()" v-model="formData.master_order_num" />
+				<input class="scanner-input" type="text" focus placeholder="请扫描拣选单号" @confirm="nextStep()" v-model="formData.master_order_num" />
 			</view>
 			<!-- 底栏操作按钮 -->
 			<view class="bottom-btn">

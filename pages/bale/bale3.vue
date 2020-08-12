@@ -19,7 +19,7 @@
 			</view>
 			<view class="scanner">
 				<view class="scanner-title">扫描SKU或分拣箱条码</view>
-				<input class="scanner-input" placeholder="请扫描SKU条码" @confirm="nextStep()" v-model="formData.sku_code" />
+				<input class="scanner-input" placeholder="请扫描SKU条码" focus @confirm="nextStep()" v-model="formData.sku_code" />
 			</view>
 			<!-- 底栏操作按钮 -->
 			<view class="bottom-btn">

@@ -78,7 +78,7 @@
 	/deep/ .uni-navbar__header {
 		color: #fff !important;
 		background-color: #484370 !important;
-		padding-top: 40rpx;
+		padding-top: 40px;
 
 		.icon-left {
 			font-size: 40rpx;

@@ -119,7 +119,7 @@
 		font-size: 34rpx;
 		/* #endif */
 		/* #ifndef APP-PLUS */
-		font-size: $uni-font-size-lg;
+		font-size: 20px;
 		/* #endif */
 	}
 	.uni-nav-bar-right-text {

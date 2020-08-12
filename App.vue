@@ -76,12 +76,19 @@
 	}
 
 	/deep/ .uni-navbar__header {
+		/* #ifdef APP-PLUS */
+		padding-top: 40rpx;
+		/* #endif */
 		color: #fff !important;
 		background-color: #484370 !important;
-		padding-top: 40px;
 
 		.icon-left {
+			/* #ifdef APP-PLUS */
 			font-size: 40rpx;
+			/* #endif */
+			/* #ifndef APP-PLUS */
+			font-size: 20px;
+			/* #endif */
 		}
 	}
 
@@ -95,8 +102,12 @@
 		padding: 10rpx 30rpx 65px 30rpx;
 		box-sizing: border-box;
 		min-height: calc(100vh);
-		padding-top: 65px;
-		// margin-top: 65px;
+		/* #ifdef APP-PLUS */
+		padding-top: 70px;
+		/* #endif */
+		/* #ifndef APP-PLUS */
+		padding-top: 50px;
+		/* #endif */
 
 		.top-info {
 			font-size: 30rpx;

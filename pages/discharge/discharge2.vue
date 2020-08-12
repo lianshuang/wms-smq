@@ -14,7 +14,7 @@
 		<view class="operation">
 			<!-- 顶部显示栏 -->
 			<view class="top-info">
-				<view>入库订单号：{{master_order_num}}</view>
+				<view>入库订单号：{{requestData.master_order_num}}</view>
 			</view>
 			<view class="scanner">
 				<text class="scanner-label">输入箱数：</text>
@@ -25,7 +25,7 @@
 				<text>扫描箱记录</text>
 				<view class="list-table">
 					<table>
-						<tr v-for="item in record" :key="item.id">
+						<tr v-for="item in requestData.record" :key="item.id">
 							<td>{{item.boxes}}箱</td>
 							<td>{{parseTime(item.start_date)}}</td>
 						</tr>
@@ -54,8 +54,6 @@
 					boxes: ''
 				},
 				option: {},
-				master_order_num: '',
-				record: [],
 				loading: false
 			}
 		},
@@ -65,14 +63,12 @@
 				return {
 					...getApp().globalData.request,
 					step: this.getRoutePath().step,
-					...this.formData,
+					...this.formData
 				}
 			}
 		},
 		onLoad: function(option) {
 			this.option = option
-			this.master_order_num = getApp().globalData.request.master_order_num
-			this.record = getApp().globalData.request.record
 		},
 		methods: {
 			// 校验
@@ -109,6 +105,10 @@
 				uni.hideLoading();
 				this.loading = false
 				if (!flag) return
+				console.log('-------------');
+				console.log(this.requestData);
+				console.log('+++++++++++');
+				
 				nextStep(this.filterRequest(this.requestData)).then(res => {
 					console.log(res);
 					if (res.code === 200) {
@@ -141,8 +141,8 @@
 							position: 'top'
 						});
 					}
-				})
-			},
+				}).catch(()=>{console.log(11)})
+			}
 		}
 	}
 </script>

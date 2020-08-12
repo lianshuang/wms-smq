@@ -85,7 +85,15 @@ Vue.prototype.getStepRouter = function(step) {
 
 // 全局获取当前路由和前后路由
 Vue.prototype.getRoutePath = function() {
-	const path = getCurrentPages()[getCurrentPages().length - 1]['$route']['path']
+	let base_path = ''
+	// #ifdef APP-PLUS
+	base_path = '/' + getCurrentPages()[getCurrentPages().length - 1]['route']
+	// #endif
+	// #ifndef APP-PLUS
+	base_path = (getCurrentPages()[getCurrentPages().length - 1]['$route']['path'])
+	// #endif
+	
+	const path = base_path
 	const step = Number(path.slice(-1))
 	if (isNaN(step)) return {}
 	const basicPath = './' + path.split('/')[3].slice(0, -1)

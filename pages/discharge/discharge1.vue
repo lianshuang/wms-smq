@@ -68,7 +68,6 @@
 						resolve(false)
 					}
 					resolve(true)
-
 				})
 			},
 			// 返回
@@ -123,6 +122,7 @@
 					mask: true
 				});
 				let flag = await this.validateForm()
+
 				uni.hideLoading();
 				this.loading = false
 				if (!flag) return

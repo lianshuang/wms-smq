@@ -14,8 +14,8 @@
 		<view class="operation">
 			<!-- 顶部显示栏 -->
 			<view class="top-info">
-				<view>入库订单号：{{master_order_num}}</view>
-				<view>SKU NO.：{{sku_code}}</view>
+				<view>入库订单号：{{requestData.master_order_num}}</view>
+				<view>SKU NO.：{{requestData.sku_code}}</view>
 			</view>
 			<view class="scanner">
 				<view class="scanner-title">当前SKU包装信息</view>
@@ -59,9 +59,7 @@
 				initData: {},
 				comfirm: false,
 				option: {},
-				loading: false,
-				sku_code: '',
-				master_order_num: ''
+				loading: false
 			}
 		},
 		computed: {
@@ -76,8 +74,6 @@
 		},
 		onLoad: function(option) {
 			this.option = option
-			this.master_order_num = getApp().globalData.request.master_order_num
-			this.sku_code = getApp().globalData.request.sku_code
 		},
 		created() {
 			const t = getApp().globalData.request

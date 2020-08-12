@@ -14,7 +14,7 @@
 		<view class="operation">
 			<!-- 顶部显示栏 -->
 			<view class="top-info">
-				<view>入库订单号：{{master_order_num}}</view>
+				<view>入库订单号：{{requestData.master_order_num}}</view>
 			</view>
 			<view class="scanner">
 				<text class="scanner-label">扫描SKU NO.：</text>
@@ -22,7 +22,7 @@
 			</view>
 			<!-- 底部信息 -->
 			<view class="bottom-info">
-				<text>入库订单PCS: {{pre_carton}} | {{shelf_carton}}</text>
+				<text>入库订单PCS: {{requestData.pre_carton}} | {{requestData.shelf_carton}}</text>
 			</view>
 			<!-- 底栏操作按钮 -->
 			<view class="bottom-btn">
@@ -46,10 +46,7 @@
 					sku_code: ''
 				},
 				option: {},
-				loading: false,
-				pre_carton: '',
-				shelf_carton: '',
-				master_order_num: ''
+				loading: false
 			}
 		},
 		computed: {
@@ -64,9 +61,6 @@
 		},
 		onLoad: function(option) {
 			this.option = option
-			this.master_order_num = getApp().globalData.request.master_order_num
-			this.pre_carton = getApp().globalData.request.pre_carton
-			this.shelf_carton = getApp().globalData.request.shelf_carton
 		},
 		methods: {
 			// 校验

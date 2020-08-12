@@ -14,9 +14,9 @@
 		<view class="operation">
 			<!-- 顶部显示栏 -->
 			<view class="top-info">
-				<view>入库订单号：{{requestData.master_order_num}}</view>
-				<view>SKU NO.：{{requestData.sku_code}}</view>
-				<view>本次上架数量：{{requestData.pieces}}</view>
+				<view>入库订单号：{{master_order_num}}</view>
+				<view>SKU NO.：{{sku_code}}</view>
+				<view>本次上架数量：{{pieces}}</view>
 			</view>
 			<view class="scanner">
 				<view class="scanner-title">扫描库位</view>
@@ -47,7 +47,10 @@
 				initData: {},
 				comfirm: false,
 				option: {},
-				loading: false
+				loading: false,
+				master_order_num: '',
+				sku_code: '',
+				pieces: ''
 			}
 		},
 		computed: {
@@ -62,6 +65,9 @@
 		},
 		onLoad: function(option) {
 			this.option = option
+			this.master_order_num = getApp().globalData.request.master_order_num
+			this.sku_code = getApp().globalData.request.sku_code
+			this.pieces = getApp().globalData.request.pieces
 		},
 		created() {
 			const t = getApp().globalData.request

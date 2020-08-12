@@ -14,8 +14,8 @@
 		<view class="operation">
 			<!-- 顶部显示栏 -->
 			<view class="top-info">
-				<view>拣选单号：{{requestData.master_order_num}}</view>
-				<view>Pallet ID：{{requestData.pallet_id}}</view>
+				<view>拣选单号：{{master_order_num}}</view>
+				<view>Pallet ID：{{pallet_id}}</view>
 			</view>
 			<view class="scanner">
 				<view class="scanner-title">扫描SKU或分拣箱条码</view>
@@ -52,7 +52,9 @@
 				option: {},
 				loading: false,
 				// 内网ip
-				intranet: ''
+				intranet: '',
+				master_order_num: '',
+				pallet_id: ''
 			}
 		},
 		computed: {
@@ -67,6 +69,8 @@
 		},
 		onLoad: function(option) {
 			this.option = option
+			this.master_order_num = getApp().globalData.request.master_order_num
+			this.pallet_id = getApp().globalData.request.pallet_id
 		},
 		created() {
 			get_intranet().then(res => {

@@ -14,8 +14,8 @@
 		<view class="operation">
 			<!-- 顶部显示栏 -->
 			<view class="top-info">
-				<view>拣选单号：{{requestData.master_order_num}}</view>
-				<view>出库单数量(PCS)：{{requestData.expected_pick || '*'}} | {{requestData.actual_pick || '*'}}</view>
+				<view>拣选单号：{{master_order_num}}</view>
+				<view>出库单数量(PCS)：{{expected_pick || '*'}} | {{actual_pick || '*'}}</view>
 			</view>
 			<view class="scanner">
 				<text class="scanner-label">扫描Pallet ID：</text>
@@ -43,7 +43,10 @@
 					pallet_id: ''
 				},
 				option: {},
-				loading: false
+				loading: false,
+				master_order_num: '',
+				expected_pick: '',
+				actual_pick: ''
 			}
 		},
 		computed: {
@@ -58,6 +61,9 @@
 		},
 		onLoad: function(option) {
 			this.option = option
+			this.master_order_num = getApp().globalData.request.master_order_num
+			this.expected_pick = getApp().globalData.request.expected_pick
+			this.actual_pick = getApp().globalData.request.actual_pick
 		},
 		methods: {
 			// 校验

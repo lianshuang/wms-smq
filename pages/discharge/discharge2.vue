@@ -74,11 +74,6 @@
 			this.master_order_num = getApp().globalData.request.master_order_num
 			this.record = getApp().globalData.request.record
 		},
-		created() {
-			console.log(getApp().globalData.request);
-			// this.master_order_num = getApp().globalData.request.master_order_num
-			// this.record = getApp().globalData.request.record
-		},
 		methods: {
 			// 校验
 			validateForm() {

@@ -14,7 +14,7 @@
 		<view class="operation">
 			<!-- 顶部显示栏 -->
 			<view class="top-info">
-				<view>拣选单号：{{requestData.master_order_num}}</view>
+				<view>拣选单号：{{master_order_num}}</view>
 			</view>
 			<view class="scanner">
 				<text class="scanner-label">扫描库位：</text>
@@ -42,7 +42,8 @@
 					pick_location: null
 				},
 				option: {},
-				loading: false
+				loading: false,
+				master_order_num: ''
 			}
 		},
 		computed: {
@@ -57,6 +58,7 @@
 		},
 		onLoad: function(option) {
 			this.option = option
+			this.master_order_num = getApp().globalData.request.master_order_num
 		},
 		methods: {
 			// 校验

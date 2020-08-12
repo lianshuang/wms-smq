@@ -14,10 +14,10 @@
 		<view class="operation">
 			<!-- 顶部显示栏 -->
 			<view class="top-info">
-				<view>拣选单号：{{requestData.master_order_num}}</view>
-				<view>库位：{{requestData.target_location}}</view>
-				<view>SKU NO.：{{requestData.code}}</view>
-				<view>应拣选件数：{{requestData.expected_pick}}</view>
+				<view>拣选单号：{{master_order_num}}</view>
+				<view>库位：{{target_location}}</view>
+				<view>SKU NO.：{{code}}</view>
+				<view>应拣选件数：{{expected_pick}}</view>
 			</view>
 			<view class="scanner">
 				<text class="scanner-label">扫描SKU条码：</text>
@@ -25,7 +25,7 @@
 			</view>
 			<!-- 底部信息 -->
 			<view class="bottom-info">
-				<view>实际已拣选件数: {{requestData.actual_pick}}</view>
+				<view>实际已拣选件数: {{actual_pick}}</view>
 				<view>本次拣选件数: {{formData.pick_num}}</view>
 				<input class="pick_num" type="number" placeholder="请输入本次拣选数量" v-model.number="formData.pick_num" />
 			</view>
@@ -52,7 +52,12 @@
 					pick_num: 1
 				},
 				option: {},
-				loading: false
+				loading: false,
+				master_order_num: '',
+				target_location: '',
+				code: '',
+				expected_pick: '',
+				actual_pick: ''
 			}
 		},
 		computed: {
@@ -67,6 +72,11 @@
 		},
 		onLoad: function(option) {
 			this.option = option
+			this.master_order_num = getApp().globalData.request.master_order_num
+			this.target_location = getApp().globalData.request.target_location
+			this.code = getApp().globalData.request.code
+			this.expected_pick = getApp().globalData.request.expected_pick
+			this.actual_pick = getApp().globalData.request.actual_pick
 		},
 		methods: {
 			// 校验

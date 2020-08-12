@@ -14,7 +14,7 @@
 		<view class="operation">
 			<!-- 顶部显示栏 -->
 			<view class="top-info">
-				<view>入库订单号：{{requestData.master_order_num}}</view>
+				<view>入库订单号：{{master_order_num}}</view>
 			</view>
 			<view class="scanner">
 				<text class="scanner-label">扫描SKU NO.：</text>
@@ -42,7 +42,8 @@
 					sku_code: ''
 				},
 				option: {},
-				loading: false
+				loading: false,
+				master_order_num: ''
 			}
 		},
 		computed: {
@@ -57,6 +58,7 @@
 		},
 		onLoad: function(option) {
 			this.option = option
+			this.master_order_num = getApp().globalData.request.master_order_num
 		},
 		methods: {
 			// 校验

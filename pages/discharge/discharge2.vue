@@ -14,7 +14,7 @@
 		<view class="operation">
 			<!-- 顶部显示栏 -->
 			<view class="top-info">
-				<view>入库订单号：{{requestData.master_order_num}}</view>
+				<view>入库订单号：{{master_order_num}}</view>
 			</view>
 			<view class="scanner">
 				<text class="scanner-label">输入箱数：</text>
@@ -25,7 +25,7 @@
 				<text>扫描箱记录</text>
 				<view class="list-table">
 					<table>
-						<tr v-for="item in requestData.record" :key="item.id">
+						<tr v-for="item in record" :key="item.id">
 							<td>{{item.boxes}}箱</td>
 							<td>{{parseTime(item.start_date)}}</td>
 						</tr>
@@ -54,26 +54,12 @@
 					boxes: ''
 				},
 				option: {},
+				master_order_num: '',
+				record: [],
 				loading: false
 			}
 		},
 		computed: {
-			// 获取页面路由信息
-			// getRoutePath() {
-			// 	const path = getCurrentPages()[getCurrentPages().length - 1]['$route']['path']
-			// 	const step = Number(path.slice(-1))
-			// 	const basicPath = './' + path.split('/')[3].slice(0, -1)
-			// 	const lastPath = step - 1 === 0 ?
-			// 		'../index/index' : './' + basicPath + (step - 1 - 1)
-			// 	const nextPath = './' + path.split('/')[3].slice(0, -1) + (step + 1)
-			// 	return {
-			// 		step,
-			// 		path,
-			// 		lastPath,
-			// 		nextPath,
-			// 		basicPath
-			// 	}
-			// },
 			// 获取当前步骤需要提交的表单信息
 			requestData() {
 				return {
@@ -85,23 +71,15 @@
 		},
 		onLoad: function(option) {
 			this.option = option
+			this.master_order_num = getApp().globalData.request.master_order_num
+			this.record = getApp().globalData.request.record
+		},
+		created() {
+			console.log(getApp().globalData.request);
+			// this.master_order_num = getApp().globalData.request.master_order_num
+			// this.record = getApp().globalData.request.record
 		},
 		methods: {
-			// backToIndex(){
-			// 	uni.showModal({
-			// 	    title: '提示',
-			// 	    content: '退出操作返回主页？',
-			// 	    success: function (res) {
-			// 	        if (res.confirm) {
-			// 	            uni.redirectTo({
-			// 	            	url: '../index/index'
-			// 	            });
-			// 	        } else if (res.cancel) {
-			// 	            console.log('用户点击取消');
-			// 	        }
-			// 	    }
-			// 	});
-			// },
 			// 校验
 			validateForm() {
 				return new Promise((resolve, reject) => {

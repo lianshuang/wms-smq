@@ -35,7 +35,14 @@
 
 			// 设置全局type
 			setTimeout(() => {
-				const path = getCurrentPages()[getCurrentPages().length - 1]['$route']['path']
+				let base_path = ''
+				// #ifdef APP-PLUS
+				base_path = '/' + getCurrentPages()[getCurrentPages().length - 1]['route']
+				// #endif
+				// #ifndef APP-PLUS
+				base_path = (getCurrentPages()[getCurrentPages().length - 1]['$route']['path'])
+				// #endif
+				const path = base_path
 				const type = path.split('/')[2]
 				getApp().globalData.request.type = type
 				const page = path.slice(-1)

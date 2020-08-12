@@ -70,7 +70,14 @@ Vue.prototype.backToIndex = function(step) {
 
 // 全局获取步骤后进行跳转步骤页
 Vue.prototype.getStepRouter = function(step) {
-	const url = './' + (getCurrentPages()[getCurrentPages().length - 1]['$route']['path']).split('/')[2] + step
+	let base_path = ''
+	// #ifdef APP-PLUS
+	base_path = '/' + getCurrentPages()[getCurrentPages().length - 1]['route']
+	// #endif
+	// #ifndef APP-PLUS
+	base_path = (getCurrentPages()[getCurrentPages().length - 1]['$route']['path'])
+	// #endif
+	const url = './' + base_path.split('/')[2] + step
 	uni.redirectTo({
 		url
 	});

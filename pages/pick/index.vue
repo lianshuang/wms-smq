@@ -25,10 +25,10 @@
 				}).then(res => {
 					console.log(res);
 					if (res.code === 200) {
-						this.getStepRouter(res.data.step)
 						getApp().globalData.request = { ...getApp().globalData.request,
 							...res.data.params
 						}
+						this.getStepRouter(res.data.step)
 					}
 					uni.hideLoading();
 				}).catch(err => {

@@ -136,6 +136,62 @@
 				"navigationBarTitleText": "输入SKU或分拣箱条码"
 			}
 		},
+		// 盘点
+		{
+			"path": "pages/check/index",
+			"style": {
+				"navigationBarTitleText": "扫描"
+			}
+		},
+		{
+			"path": "pages/check/check1",
+			"style": {
+				"navigationBarTitleText": "扫描盘点单号"
+			}
+		},
+		{
+			"path": "pages/check/check2",
+			"style": {
+				"navigationBarTitleText": "扫描库位"
+			}
+		},
+		{
+			"path": "pages/check/check3",
+			"style": {
+				"navigationBarTitleText": "输入SKU"
+			}
+		},
+		{
+			"path": "pages/check/check4",
+			"style": {
+				"navigationBarTitleText": "输入数量"
+			}
+		},
+		// 移库下架
+		{
+			"path": "pages/transferoff/index",
+			"style": {
+				"navigationBarTitleText": "移库下架"
+			}
+		},
+		{
+			"path": "pages/transferoff/transferoff1",
+			"style": {
+				"navigationBarTitleText": "扫描库位"
+			}
+		},
+		{
+			"path": "pages/transferoff/transferoff2",
+			"style": {
+				"navigationBarTitleText": "扫描SKU NO."
+			}
+		},
+		{
+			"path": "pages/transferoff/transferoff3",
+			"style": {
+				"navigationBarTitleText": "输入移库下架数量"
+			}
+		},
 		// 查询sku库存
 		{
 			"path": "pages/sku/index",

@@ -88,12 +88,24 @@
 						path: 'bale',
 						color: '#1f43c5'
 					},
-					// {
-					// 	icon: 'iconfahuo',
-					// 	text: '发货',
-					// 	path: 'ship',
-					// 	color: '#f90909'
-					// }
+					{
+						icon: 'iconnavicon-kcpdd',
+						text: '盘点',
+						path: 'check',
+						color: '#f90909'
+					},
+					{
+						icon: 'iconyiku',
+						text: '移库下架',
+						path: 'transferoff',
+						color: '#000'
+					},
+					{
+						icon: 'iconyiku',
+						text: '移库上架',
+						path: 'transferon',
+						color: 'teal'
+					}
 				]
 			}
 		},

@@ -2,9 +2,9 @@
 	<view>
 		<!-- 顶部栏 -->
 		<view class="step">
-			<uni-nav-bar :shadow='false' title="盘点" @clickLeft="backToIndex()">
+			<uni-nav-bar :shadow='false' title="移库上架" @clickLeft="backToIndex()">
 				<view slot="left">
-					<i class="iconfont iconfanhui1 icon-left" />
+					<i class="iconfont iconfanhui1 icon-left"/>
 				</view>
 				<view slot="right"> <text>{{$username}}</text> </view>
 			</uni-nav-bar>
@@ -14,19 +14,18 @@
 		<view class="operation">
 			<!-- 顶部显示栏 -->
 			<view class="top-info">
-				<view>盘点单号：{{requestData.master_order_num}}</view>
-				<view>库位：{{requestData.target_location}}</view>
 				<view>SKU NO.：{{requestData.sku_code}}</view>
-				<view v-if="requestData.book_inventory">账面数量：{{requestData.book_inventory}}</view>
+				<view>库位：{{requestData.target_location}}</view>
+				<view>库存：{{requestData.inventory}}</view>
 			</view>
 			<view class="scanner">
-				<view class="scanner-title">输入当前SKU盘点数量</view>
-				<input class="scanner-input" placeholder="请输入当前SKU盘点数量" focus @confirm="nextStep()" v-model="formData.check_inventory" />
+				<text class="scanner-label">输入当前移库上架数量：</text>
+				<input class="scanner-input" type="text" placeholder="请输入当前移库下架数量" focus @confirm="nextStep()" v-model="formData.pieces" />
 			</view>
 			<!-- 底栏操作按钮 -->
 			<view class="bottom-btn">
-				<button class="left" type="primary" @click="back()" :loading="false">完成</button>
-				<button class="right" type="primary" @click="nextStep()" :loading="false">下一步</button>
+				<button class="left" type="primary" @click="back()" :loading="false">返回</button>
+				<button class="right" type="primary" @click="nextStep()" :loading="false">确定</button>
 			</view>
 		</view>
 
@@ -35,21 +34,15 @@
 </template>
 
 <script>
-	const Qs = require('qs')
 	import {
-		nextStep,
-		printer,
-		get_intranet
+		nextStep
 	} from '../../commom/js/api.js'
 	export default {
 		data() {
 			return {
 				formData: {
-					check_inventory: null
+					boxes: ''
 				},
-				// 初始反写信息
-				initData: {},
-				comfirm: false,
 				option: {},
 				loading: false
 			}
@@ -60,31 +53,20 @@
 				return {
 					...getApp().globalData.request,
 					step: this.getRoutePath().step,
-					...this.formData,
+					...this.formData
 				}
 			}
 		},
 		onLoad: function(option) {
 			this.option = option
 		},
-		created() {
-			const t = getApp().globalData.request
-			Object.keys(t).forEach(i => {
-				if (i.startsWith('$')) {
-					this.initData[i.slice(1)] = t[i]
-					this.formData[i.slice(1)] = t[i]
-					this.comfirm = true
-				}
-			})
-		},
 		methods: {
 			// 校验
 			validateForm() {
 				return new Promise((resolve, reject) => {
-					console.log(this.formData.width);
-					if (!this.formData.check_inventory) {
+					if (!this.formData.pieces) {
 						uni.showToast({
-							title: '请输入盘点数量',
+							title: '请输入上架数量',
 							icon: 'none',
 							mask: true,
 							duration: 2000
@@ -123,12 +105,11 @@
 						} else {
 							const type = getApp().globalData.request.type
 							getApp().globalData.request = {
-								type,
-								master_order_num: res.data.master_order_num
+								type
 							}
 						}
 						uni.showToast({
-							title: '盘点成功',
+							title: '上架成功',
 							mask: true,
 							duration: 2000,
 							icon: 'none',
@@ -146,8 +127,8 @@
 							position: 'top'
 						});
 					}
-				})
-			},
+				}).catch(()=>{console.log(11)})
+			}
 		}
 	}
 </script>

@@ -192,6 +192,31 @@
 				"navigationBarTitleText": "输入移库下架数量"
 			}
 		},
+		// 移库上架
+		{
+			"path": "pages/transferon/index",
+			"style": {
+				"navigationBarTitleText": "移库上架"
+			}
+		},
+		{
+			"path": "pages/transferon/transferon1",
+			"style": {
+				"navigationBarTitleText": "扫描SKU NO."
+			}
+		},
+		{
+			"path": "pages/transferon/transferon2",
+			"style": {
+				"navigationBarTitleText": "扫描库位"
+			}
+		},
+		{
+			"path": "pages/transferon/transferon3",
+			"style": {
+				"navigationBarTitleText": "输入移库上架数量"
+			}
+		},
 		// 查询sku库存
 		{
 			"path": "pages/sku/index",

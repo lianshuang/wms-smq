@@ -2,7 +2,7 @@
 	<view>
 		<!-- 顶部栏 -->
 		<view class="step">
-			<uni-nav-bar :shadow='false' title="打包" @clickLeft="backToIndex()">
+			<uni-nav-bar :shadow='false' title="盘点" @clickLeft="backToIndex()">
 				<view slot="left">
 					<i class="iconfont iconfanhui1 icon-left" />
 				</view>

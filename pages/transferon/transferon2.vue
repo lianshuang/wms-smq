@@ -2,26 +2,21 @@
 	<view>
 		<!-- 顶部栏 -->
 		<view class="step">
-			<uni-nav-bar :shadow='false' title="盘点" @clickLeft="backToIndex()">
+			<uni-nav-bar :shadow='false' title="移库上架" @clickLeft="backToIndex()">
 				<view slot="left">
 					<i class="iconfont iconfanhui1 icon-left" />
 				</view>
 				<view slot="right"> <text>{{$username}}</text> </view>
 			</uni-nav-bar>
 		</view>
-
 		<!-- 操作栏 -->
 		<view class="operation">
-			<!-- 顶部显示栏 -->
 			<view class="top-info">
-				<view>盘点单号：{{requestData.master_order_num}}</view>
-				<view>库位：{{requestData.target_location}}</view>
 				<view>SKU NO.：{{requestData.sku_code}}</view>
-				<view v-if="requestData.book_inventory">账面数量：{{requestData.book_inventory}}</view>
 			</view>
 			<view class="scanner">
-				<view class="scanner-title">输入当前SKU盘点数量</view>
-				<input class="scanner-input" placeholder="请输入当前SKU盘点数量" focus @confirm="nextStep()" v-model="formData.check_inventory" />
+				<view class="scanner-label">扫描库位：</view>
+				<input class="scanner-input" type="text" placeholder="请扫描库位" focus @confirm="nextStep()" v-model="formData.target_location" />
 			</view>
 			<!-- 底栏操作按钮 -->
 			<view class="bottom-btn">
@@ -29,27 +24,21 @@
 				<button class="right" type="primary" @click="nextStep()" :loading="false">下一步</button>
 			</view>
 		</view>
-
 	</view>
 
 </template>
 
 <script>
-	const Qs = require('qs')
 	import {
 		nextStep,
-		printer,
-		get_intranet
+		finish_task
 	} from '../../commom/js/api.js'
 	export default {
 		data() {
 			return {
 				formData: {
-					check_inventory: null
+					target_location: ''
 				},
-				// 初始反写信息
-				initData: {},
-				comfirm: false,
 				option: {},
 				loading: false
 			}
@@ -65,26 +54,16 @@
 			}
 		},
 		onLoad: function(option) {
+			console.log(option);
 			this.option = option
-		},
-		created() {
-			const t = getApp().globalData.request
-			Object.keys(t).forEach(i => {
-				if (i.startsWith('$')) {
-					this.initData[i.slice(1)] = t[i]
-					this.formData[i.slice(1)] = t[i]
-					this.comfirm = true
-				}
-			})
 		},
 		methods: {
 			// 校验
 			validateForm() {
 				return new Promise((resolve, reject) => {
-					console.log(this.formData.width);
-					if (!this.formData.check_inventory) {
+					if (!this.formData.target_location) {
 						uni.showToast({
-							title: '请输入盘点数量',
+							title: '请扫描库位',
 							icon: 'none',
 							mask: true,
 							duration: 2000
@@ -92,7 +71,6 @@
 						resolve(false)
 					}
 					resolve(true)
-
 				})
 			},
 			// 返回
@@ -110,31 +88,16 @@
 					mask: true
 				});
 				let flag = await this.validateForm()
-				uni.hideLoading();
+				uni.hideLoading()
 				this.loading = false
 				if (!flag) return
 				nextStep(this.filterRequest(this.requestData)).then(res => {
 					console.log(res);
 					if (res.code === 200) {
-						if (res.data.step != 1) {
-							getApp().globalData.request = { ...getApp().globalData.request,
-								...res.data
-							}
-						} else {
-							const type = getApp().globalData.request.type
-							getApp().globalData.request = {
-								type,
-								master_order_num: res.data.master_order_num
-							}
+						getApp().globalData.request = { ...getApp().globalData.request,
+							...res.data
 						}
-						uni.showToast({
-							title: '盘点成功',
-							mask: true,
-							duration: 2000,
-							icon: 'none',
-							position: 'top'
-						});
-						uni.redirectTo({
+						uni.navigateTo({
 							url: this.getRoutePath().basicPath + res.data.step
 						})
 					} else {
@@ -146,6 +109,7 @@
 							position: 'top'
 						});
 					}
+					uni.hideLoading()
 				})
 			},
 		}

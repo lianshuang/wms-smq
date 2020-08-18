@@ -101,7 +101,7 @@
 						color: '#000'
 					},
 					{
-						icon: 'iconyiku',
+						icon: 'iconyiku1',
 						text: '移库上架',
 						path: 'transferon',
 						color: 'teal'

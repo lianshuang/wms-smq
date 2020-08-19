@@ -20,7 +20,7 @@
 			</view>
 			<!-- 底栏操作按钮 -->
 			<view class="bottom-btn">
-				<button class="left" type="primary" @click="back()" :loading="false">完成</button>
+				<button class="left" type="primary" @click="back()" :loading="false">返回</button>
 				<button class="right" type="primary" @click="nextStep()" :loading="false">下一步</button>
 			</view>
 		</view>

@@ -90,6 +90,14 @@
 							duration: 2000
 						});
 						resolve(false)
+					} else if (Number(this.formData.check_inventory) < 0) {
+						uni.showToast({
+							title: '盘点数量不能小于0',
+							icon: 'none',
+							mask: true,
+							duration: 2000
+						});
+						resolve(false)
 					}
 					resolve(true)
 

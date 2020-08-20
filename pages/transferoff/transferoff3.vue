@@ -4,7 +4,7 @@
 		<view class="step">
 			<uni-nav-bar :shadow='false' title="移库下架" @clickLeft="backToIndex()">
 				<view slot="left">
-					<i class="iconfont iconfanhui1 icon-left"/>
+					<i class="iconfont iconfanhui1 icon-left" />
 				</view>
 				<view slot="right"> <text>{{$username}}</text> </view>
 			</uni-nav-bar>
@@ -72,6 +72,14 @@
 							duration: 2000
 						});
 						resolve(false)
+					} else if (Number(this.formData.pieces) <= 0) {
+						uni.showToast({
+							title: '下架数量必须大于0',
+							icon: 'none',
+							mask: true,
+							duration: 2000
+						});
+						resolve(false)
 					}
 					resolve(true)
 
@@ -127,7 +135,9 @@
 							position: 'top'
 						});
 					}
-				}).catch(()=>{console.log(11)})
+				}).catch(() => {
+					console.log(11)
+				})
 			}
 		}
 	}

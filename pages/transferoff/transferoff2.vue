@@ -18,6 +18,19 @@
 				<view class="scanner-label">扫描SKU NO.：</view>
 				<input class="scanner-input" type="text" placeholder="请扫描SKU NO." focus @confirm="nextStep()" v-model="formData.sku_code" />
 			</view>
+			<!-- 底部显示栏 -->
+			<view class="bottom-info">
+				<text>下架单记录</text>
+				<view class="list-table">
+					<table>
+						<tr v-for="item in requestData.record" :key="item.id">
+							<td>{{item.sku_code}}</td>
+							<td>{{item.target_location}}</td>
+							<td>{{item.pieces}}</td>
+						</tr>
+					</table>
+				</view>
+			</view>
 			<!-- 底栏操作按钮 -->
 			<view class="bottom-btn">
 				<button class="left" type="primary" @click="back()" :loading="false">返回</button>

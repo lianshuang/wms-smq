@@ -140,6 +140,7 @@
 							icon: 'none',
 							position: 'top'
 						});
+						this.formData.boxes = ''
 					}
 				}).catch(()=>{console.log(11)})
 			}

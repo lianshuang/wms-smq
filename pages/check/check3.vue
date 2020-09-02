@@ -119,6 +119,7 @@
 							icon: 'none',
 							position: 'top'
 						});
+						this.formData.code = ''
 					}
 				})
 			},

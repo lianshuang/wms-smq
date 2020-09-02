@@ -111,6 +111,7 @@
 							icon: 'none',
 							position: 'top'
 						});
+						this.formData.sku_code = ''
 					}
 				})
 			},

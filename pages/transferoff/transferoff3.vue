@@ -134,6 +134,7 @@
 							icon: 'none',
 							position: 'top'
 						});
+						this.formData.pieces = ''
 					}
 				}).catch(() => {
 					console.log(11)

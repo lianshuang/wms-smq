@@ -144,6 +144,7 @@
 							icon: 'none',
 							position: 'top'
 						});
+						this.formData.target_location = ''
 					}
 					uni.hideLoading()
 				})

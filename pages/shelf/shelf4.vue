@@ -16,6 +16,7 @@
 			<view class="top-info">
 				<view>入库订单号：{{requestData.master_order_num}}</view>
 				<view>SKU NO.：{{requestData.sku_code}}</view>
+				<view>已上架数量：{{requestData.shelf_carton}}</view>
 				<view>本次上架数量：{{requestData.pieces}}</view>
 			</view>
 			<view class="scanner">
@@ -148,6 +149,7 @@
 							icon: 'none',
 							position: 'top'
 						});
+						this.formData.location = ''
 					}
 				})
 			},

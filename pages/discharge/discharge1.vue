@@ -143,6 +143,7 @@
 							icon: 'none',
 							position: 'top'
 						});
+						this.formData.master_order_num = ''
 					}
 					uni.hideLoading()
 				})

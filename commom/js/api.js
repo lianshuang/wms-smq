@@ -17,6 +17,9 @@ export const nextStep = params => http.post(`api/scanner/next_step/`, params || 
 // 拣选跳过
 export const pick_ship_pick_order = params => http.post(`api/scanner/pick_ship_pick_order/`, params || {})
 
+// 拣选短拣
+export const pick_short_pick_order = params => http.post(`api/scanner/pick_short_pick_order/`, params || {})
+
 // 查询sku库存
 export const sku_search = params => http.post(`api/scanner/sku_search/`, params || {})
 

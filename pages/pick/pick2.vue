@@ -15,6 +15,9 @@
 			<!-- 顶部显示栏 -->
 			<view class="top-info">
 				<view>拣选单号：{{requestData.master_order_num}}</view>
+				<view>库位：{{requestData.target_location}}</view>
+				<view>SKU NO.：{{requestData.code}}</view>
+				<view>应拣选件数：{{requestData.expected_pick}}</view>
 			</view>
 			<view class="scanner">
 				<text class="scanner-label">扫描库位：</text>
@@ -117,30 +120,10 @@
 							icon: 'none',
 							position: 'top'
 						});
+						this.formData.pick_location = ''
 					}
 				})
 			},
-			// async nextStep() {
-			// 	if (this.loading) return
-			// 	this.loading = true
-			// 	uni.showLoading({
-			// 		title: '请求中',
-			// 		mask: true
-			// 	});
-			// 	let flag = await this.validateForm()
-			// 	uni.hideLoading();
-			// 	this.loading = false
-			// 	if (!flag) return
-			// 	// 此步骤直接跳转至第三步带上pallet_id
-			// 	getApp().globalData.request = {
-			// 		...getApp().globalData.request,
-			// 		...this.formData
-			// 	}
-			// 	uni.redirectTo({
-			// 		url: this.getRoutePath().basicPath + 3
-			// 	})
-			// 	console.log('这里');
-			// },
 		}
 	}
 </script>

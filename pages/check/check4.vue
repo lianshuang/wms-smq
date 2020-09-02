@@ -153,6 +153,7 @@
 							icon: 'none',
 							position: 'top'
 						});
+						this.formData.check_inventory = ''
 					}
 				})
 			},

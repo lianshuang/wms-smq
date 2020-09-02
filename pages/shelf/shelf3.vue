@@ -146,6 +146,7 @@
 							icon: 'none',
 							position: 'top'
 						});
+						this.formData.pieces = ''
 					}
 				})
 			},

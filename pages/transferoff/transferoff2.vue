@@ -16,7 +16,7 @@
 			</view>
 			<view class="scanner">
 				<view class="scanner-label">扫描SKU NO.：</view>
-				<input class="scanner-input" type="text" placeholder="请扫描SKU NO." focus @confirm="nextStep()" v-model="formData.sku_code" />
+				<input class="scanner-input uni-input" cursor-spacing="10" type="text" placeholder="请扫描SKU NO." focus @confirm="nextStep()" v-model="formData.sku_code" />
 			</view>
 			<!-- 底部显示栏 -->
 			<view class="bottom-info">

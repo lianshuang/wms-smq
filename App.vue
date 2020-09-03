@@ -70,6 +70,8 @@
 
 <style lang="scss">
 	@import url("./static/font/iconfont.css");
+	/* uni.css - 通用组件、模板样式库，可以当作一套ui库应用 */
+	@import './uni.css';
 	.step {
 		position: fixed;
 		width: 100vw;

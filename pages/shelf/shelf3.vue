@@ -19,7 +19,7 @@
 			</view>
 			<view class="scanner">
 				<view class="scanner-title">输入当前SKU上架数量</view>
-				<input class="scanner-input" type="number" focus placeholder="请输入上架数量" @confirm="nextStep()" v-model.number="formData.pieces" />
+				<input class="scanner-input uni-input" cursor-spacing="10" type="number" focus placeholder="请输入上架数量" @confirm="nextStep()" v-model.number="formData.pieces" />
 			</view>
 			<!-- 底栏操作按钮 -->
 			<view class="bottom-btn">

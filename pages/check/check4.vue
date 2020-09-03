@@ -21,7 +21,7 @@
 			</view>
 			<view class="scanner">
 				<view class="scanner-title">输入当前SKU盘点数量</view>
-				<input class="scanner-input" placeholder="请输入当前SKU盘点数量" focus @confirm="nextStep()" v-model="formData.check_inventory" />
+				<input class="scanner-input uni-input" cursor-spacing="10" placeholder="请输入当前SKU盘点数量" focus @confirm="nextStep()" v-model="formData.check_inventory" />
 			</view>
 			<!-- 底栏操作按钮 -->
 			<view class="bottom-btn">

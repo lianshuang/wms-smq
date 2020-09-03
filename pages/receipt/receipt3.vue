@@ -20,15 +20,15 @@
 			<view class="scanner">
 				<view class="scanner-title">当前SKU包装信息</view>
 				<text class="scanner-label">长度(CM)：</text>
-				<input class="scanner-input" type="number" focus placeholder="请输入长度" @confirm="nextStep()" v-model.number="formData.length" />
+				<input class="scanner-input uni-input" cursor-spacing="10" type="number" focus placeholder="请输入长度" @confirm="nextStep()" v-model.number="formData.length" />
 				<text class="scanner-label">宽度(CM)：</text>
-				<input class="scanner-input" type="number" placeholder="请输入宽度" @confirm="nextStep()" v-model.number="formData.width" />
+				<input class="scanner-input uni-input" cursor-spacing="10" type="number" placeholder="请输入宽度" @confirm="nextStep()" v-model.number="formData.width" />
 				<text class="scanner-label">高度(CM)：</text>
-				<input class="scanner-input" type="number" placeholder="请输入高度" @confirm="nextStep()" v-model.number="formData.height" />
+				<input class="scanner-input uni-input" cursor-spacing="10" type="number" placeholder="请输入高度" @confirm="nextStep()" v-model.number="formData.height" />
 				<text class="scanner-label">毛重(KG)：</text>
-				<input class="scanner-input" type="number" placeholder="请输入毛重" @confirm="nextStep()" v-model.number="formData.weight" />
+				<input class="scanner-input uni-input" cursor-spacing="10" type="number" placeholder="请输入毛重" @confirm="nextStep()" v-model.number="formData.weight" />
 				<text class="scanner-label">当前SKU同数量：</text>
-				<input class="scanner-input" type="number" placeholder="请输入数量" @confirm="nextStep()" v-model.number="formData.pieces" />
+				<input class="scanner-input uni-input" cursor-spacing="10" type="number" placeholder="请输入数量" @confirm="nextStep()" v-model.number="formData.pieces" />
 			</view>
 			<!-- 底栏操作按钮 -->
 			<view class="bottom-btn">

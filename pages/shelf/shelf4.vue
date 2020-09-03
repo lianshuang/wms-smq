@@ -21,7 +21,7 @@
 			</view>
 			<view class="scanner">
 				<view class="scanner-title">扫描库位</view>
-				<input class="scanner-input" placeholder="请扫描库位" focus @confirm="nextStep()" v-model="formData.location" />
+				<input class="scanner-input uni-input" cursor-spacing="10" placeholder="请扫描库位" focus @confirm="nextStep()" v-model="formData.location" />
 			</view>
 			<!-- 底栏操作按钮 -->
 			<view class="bottom-btn">

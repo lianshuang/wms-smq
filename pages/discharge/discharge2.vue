@@ -18,7 +18,7 @@
 			</view>
 			<view class="scanner">
 				<text class="scanner-label">输入箱数：</text>
-				<input class="scanner-input" type="text" placeholder="请输入箱数" focus @confirm="nextStep()" v-model="formData.boxes" />
+				<input class="scanner-input uni-input" cursor-spacing="10" type="text" placeholder="请输入箱数" focus @confirm="nextStep()" v-model="formData.boxes" />
 			</view>
 			<!-- 底部显示栏 -->
 			<view class="bottom-info">

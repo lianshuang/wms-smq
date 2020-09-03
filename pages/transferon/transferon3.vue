@@ -20,7 +20,7 @@
 			</view>
 			<view class="scanner">
 				<text class="scanner-label">输入当前移库上架数量：</text>
-				<input class="scanner-input" type="text" placeholder="请输入当前移库下架数量" focus @confirm="nextStep()" v-model="formData.pieces" />
+				<input class="scanner-input uni-input" cursor-spacing="10" type="text" placeholder="请输入当前移库下架数量" focus @confirm="nextStep()" v-model="formData.pieces" />
 			</view>
 			<!-- 底栏操作按钮 -->
 			<view class="bottom-btn">
